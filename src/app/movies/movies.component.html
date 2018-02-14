@@ -1,0 +1,14 @@
+<div fxLayoutWrap fxLayoutAlign="center strech" fxLayoutGap="10px" style="margin-bottom: 20px">
+    <mat-card *ngFor="let movie of movie.results" class="movie-card">
+        <mat-card-header>
+            <mat-card-title class="mat-headline">{{ movie.title }}</mat-card-title>
+            <mat-card-subtitle>Released Date: {{movie.release_date}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{MOVIE_URL}}{{movie.poster_path}}" alt="{{movie.title}}" />
+        <mat-card-content fxLayout>
+            <p>
+                {{movie.overview}}
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>

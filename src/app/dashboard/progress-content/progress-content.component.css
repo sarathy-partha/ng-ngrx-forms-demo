@@ -1,0 +1,50 @@
+
+  canvas {
+    background: transparent;
+  }
+
+  title {
+      font-size: 12px;
+  }
+  
+  .progressContent {
+    position: absolute;
+    left: 53%;
+    top: 40%;
+    font-size: 10px;
+    transform: translate(-60%, -40%);
+    color:black;
+    height: 100px;
+    text-align: center;
+  }
+
+  .progressContent .percent {
+    margin-top: -10px;
+    font-size: 40px;
+  }
+
+  .progressContent .footer {
+      margin-top: 5px;
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .canvas-wrap {
+    position: relative;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .green {
+    color: #00bb11;
+  }
+
+  .outlineText {
+    position: absolute;
+    text-align: right;
+    margin-left: 170px;
+    margin-top: 130px;
+    color: gray;
+  }

@@ -1,0 +1,22 @@
+<aside>
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                  <mat-panel-title>
+                        <span>Dashboard</span>
+                  </mat-panel-title>
+                  <mat-panel-description>
+                        <mat-icon>home</mat-icon>
+                  </mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end" *ngFor="let menuItem of menuItems">
+                        <a matLine routerLink="{{menuItem.link}}">
+                              <span>{{menuItem.name}}</span>
+                        </a>
+                        <button color="accent" mat-icon-button routerLink="{{menuItem.link}}">
+                              <mat-icon>{{menuItem.icon}}</mat-icon>
+                        </button>
+                  </mat-list-item>
+            </mat-nav-list>
+      </mat-expansion-panel>
+</aside>

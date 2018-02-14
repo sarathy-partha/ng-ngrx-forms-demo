@@ -1,0 +1,78 @@
+.dashboard {
+  background-color: whitesmoke;
+  height: 100%;
+}
+
+:host /deep/.mat-tab-label{
+  height: 100% !important;
+  opacity: 1;
+  width: 100%;
+  padding: 0 !important;
+}
+
+:host /deep/ .mat-tab-label-container {
+  padding: 10px 10px 0px 10px;
+}
+
+:host /deep/.mat-tab-group {
+  width: 100%;
+}
+
+:host /deep/.mat-tab-header {
+  border: 0px;
+  z-index: 2;
+}
+
+:host /deep/.mat-tab-label-active {
+  border-top: 0px solid;
+  border-left: 0px solid;
+  border-right: 0px solid;
+  border-bottom: 0px solid !important;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+  background-color: white !important;
+}
+
+:host /deep/ .mat-tab-body-wrapper {
+  margin: 0px 10px 10px 10px;
+  border-top: 0px solid;
+  border-left: 0px solid;
+  border-right: 0px solid;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+  border-radius:10px 10px 10px 10px;
+  background-color: white !important;
+  z-index: 1;
+}
+
+:host /deep/ .mat-tab-body {
+  //position: absolute;
+  padding: 10px;
+}
+
+:host /deep/ .mat-ink-bar {
+  visibility: collapse !important;
+  display: none !important;
+}
+
+:host /deep/ .mat-tab-body-wrapper-first {
+  margin: 0px 10px 10px 10px;
+  border-top: 0px solid;
+  border-left: 0px solid;
+  border-right: 0px solid;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+  border-radius:0px 10px 10px 10px;
+  background-color: white !important;
+  z-index: 1;
+}
+
+:host /deep/ .mat-tab-body-wrapper-last {
+  margin: 0px 10px 10px 10px;
+  border-top: 0px solid;
+  border-left: 0px solid;
+  border-right: 0px solid;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+  border-radius:10px 0px 10px 10px;
+  background-color: white !important;
+  z-index: 1;
+}

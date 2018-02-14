@@ -1,0 +1,8 @@
+span {
+ color: bisque;
+ font-size: 14pt;
+}
+
+mat-expansion-panel {
+  background-color: lightslategray;
+}

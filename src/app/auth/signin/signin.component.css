@@ -1,0 +1,7 @@
+.signin-form {
+    margin-top: 20px;
+}
+
+mat-form-field {
+    width: 400px;
+}
