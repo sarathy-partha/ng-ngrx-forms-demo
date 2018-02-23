@@ -2,7 +2,7 @@
     padding: 0 14px;
   }
 
-  header {
+  mat-toolbar {
     top: 0;
     left: 0;
     width: 100%;
@@ -10,4 +10,10 @@
     1 3px 5px -1px rgba(0, 0, 0, .2), 
     1 6px 10px 0 rgba(0, 0, 0, .14), 
     1 1px 18px 0 rgba(0, 0, 0, .12);
+    background: black;
+    color: azure;
+  }
+
+  .logo {
+    width: 150px;
   }

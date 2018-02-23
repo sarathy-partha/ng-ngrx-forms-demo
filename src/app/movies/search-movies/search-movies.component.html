@@ -1,0 +1,35 @@
+<div class="table-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+<div class="table-container">
+  <div class="table-loading" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let movie"> {{movie.title}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="popularity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Popularity </mat-header-cell>
+      <mat-cell *matCellDef="let movie">
+        <mat-progress-bar color="accent" mode="Determinate" value={{movie.popularity}}>
+        </mat-progress-bar>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Overview </mat-header-cell>
+      <mat-cell *matCellDef="let movie"> {{movie.overview}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="release_date">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
+      <mat-cell *matCellDef="let movie"> {{movie.release_date | date}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let movie; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [length]="resultsLength" [pageSize]="30">
+  </mat-paginator>
+</div>

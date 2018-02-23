@@ -1,5 +1,5 @@
 <aside>
-      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel expanded>
             <mat-expansion-panel-header>
                   <mat-panel-title>
                         <span>Dashboard</span>
@@ -13,9 +13,6 @@
                         <a matLine routerLink="{{menuItem.link}}">
                               <span>{{menuItem.name}}</span>
                         </a>
-                        <button color="accent" mat-icon-button routerLink="{{menuItem.link}}">
-                              <mat-icon>{{menuItem.icon}}</mat-icon>
-                        </button>
                   </mat-list-item>
             </mat-nav-list>
       </mat-expansion-panel>

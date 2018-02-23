@@ -10,15 +10,8 @@ import { menuItems } from './left-nav.data';
 export class LeftNavComponent implements OnInit {
   options: {};
   menuItems = menuItems;
-  panelOpenState: boolean = true;
 
-  constructor() {
-    this.options = {
-      'fixed': true,
-      'top': 60,
-      'bottom': 0
-    }
-  }
+  constructor() { }
 
   ngOnInit() {
   }

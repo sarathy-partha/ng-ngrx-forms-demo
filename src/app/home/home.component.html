@@ -1,4 +1,4 @@
-<div class="home" fxLayoutAlign="center center" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap.gt-md="20px">
+<div class="home" fxLayoutAlign="start start" fxLayout="column" fxLayout.gt-md="row" fxLayoutGap.gt-md="20px">
   <section>
     <h1>Dashboard</h1>
     <p>A few charts, sections, resuable components emebedded</p>
@@ -11,4 +11,19 @@
     <h1>Forms</h1>
     <p>Angular reactive forms with validations, dynamic styling...</p>
   </section>
+  <section>
+    <h1>ToDo</h1>
+    <p>A simple ToDo using Firebase and AngularFire</p>
+  </section>
+</div>
+<div *ngIf="!isAuth">
+  <h2>You need to be logged in to access all of above. If you do not have a login, then please
+    <button mat-button routerLink="/signup">
+      Register
+    </button>
+    first.</h2>
+</div>
+
+<div *ngIf="isAuth">
+  <h2><-- You are already signed in please use the menu on the left to access the required features....</h2>
 </div>

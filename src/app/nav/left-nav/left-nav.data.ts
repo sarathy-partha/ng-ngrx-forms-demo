@@ -16,6 +16,8 @@ export const
             link: '/dashboard'
         },
         {
-            name: 'Forms',
+            name: 'To Do',
+            icon: '',
+            link: '/todo'
         }
     ];

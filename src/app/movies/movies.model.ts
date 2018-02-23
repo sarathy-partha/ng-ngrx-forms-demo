@@ -1,12 +1,11 @@
-export
-  class Movie {
+export interface Movie {
+  page: number;
   results: [
     {
-      title: string,
-      popularity: string,
-      poster_path: string,
-      overview: string,
-      release_date: string
+      title: string;
+      popularity: string;
+      id: number;
+      release_date: string;
     }
-  ];
+  ]
 }

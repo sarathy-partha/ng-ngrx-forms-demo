@@ -1,7 +1,7 @@
 $s-min: 60;
 $s-max: 70;
 $l-min: 70;
-$l-max: 90;
+$l-max: 80;
 
 @for $i from 1 through 100 {
 .movie-card:nth-child(#{$i}) {

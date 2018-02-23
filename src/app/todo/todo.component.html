@@ -1,0 +1,18 @@
+<mat-form-field *ngIf="!isLoading && todos">
+  <mat-select placeholder="Status">
+    <mat-option *ngFor="let status of todoStatus" [value]="status.id">
+      {{ status.status }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-list dense *ngIf="!isLoading && todos">
+  <mat-list-item *ngFor="let todo of todos">
+    <h1 matLine>{{todo.title}}</h1>
+    <p matLine>{{todo.description}}</p>
+    <span matLine>Due Date: {{todo.date | date}}</span>
+    <span matLine>{{todo.status.status}}</span>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-list>
+<button *ngIf="!todos && !isLoading" type="button" mat-button (click)="showToDo()">Refresh Now</button>

@@ -1,0 +1,74 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 650px;
+    min-width: 300px;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top:50px;
+  }
+
+  .table-container .mat-table {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    }
+
+    .table-container .mat-table .mat-header-row {
+      position: absolute;
+      top: -60px;
+      left: 0px;
+      right: 0px;
+      }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 800px;
+  }
+
+  .table-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mat-header-row {
+    background-color: rebeccapurple;
+    color: white;
+  }
+
+  .mat-header-cell {
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+  }
+
+  :host /deep/ .mat-progress-bar {
+    height: 20px;
+  }
+
+  /* Column Widths */
+.mat-cell {
+  padding: 10px;
+}
+
+.mat-paginator {
+  background-color: rebeccapurple;
+  color: white;
+}
+
+:host /deep/ .mat-paginator-decrement, :host /deep/ .mat-paginator-increment {
+  border-top: 2px solid white !important;
+  border-right: 2px solid white !important;
+}
