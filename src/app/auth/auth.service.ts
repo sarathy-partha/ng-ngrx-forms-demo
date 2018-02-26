@@ -1,35 +1,35 @@
 import { User } from "./user.model";
 import { AuthData } from "./auth-data.model";
-import { Subject } from 'rxjs/Subject';
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { AngularFireAuth } from "angularfire2/auth";
 import { ToDoService } from "../todo/todo.service";
 import { UIControlService } from "../common/uicontrol.service";
+import { Store } from "@ngrx/store";
+import * as appReducer from '../app.reducer';
+import * as UI from '../common/reducers/ui.actions';
+import * as AUTH from './actions/auth.actions';
 
 @Injectable()
 export class AuthService {
-    authStatus = new Subject<boolean>();
-    private isAuth = false;
 
     constructor(
         private router: Router,
         private afAuth: AngularFireAuth,
         private todoservice: ToDoService,
-        private uiControlService: UIControlService
+        private uiControlService: UIControlService,
+        private store: Store<{ ui: appReducer.State }>,
     ) { }
 
     initiAuthListerner() {
         this.afAuth.authState.subscribe(user => {
             if (user) {
-                this.isAuth = true;
-                this.authStatus.next(true);
+                this.store.dispatch(new AUTH.SetAuthenticated);
                 this.router.navigate(['']);
             } else {
                 this.todoservice.cancelFBSubscriptions();
-                this.isAuth = false;
-                this.authStatus.next(false);
+                this.store.dispatch(new AUTH.SetUnAuthenticated);
                 this.router.navigate(['/signin']);
             }
         });
@@ -38,47 +38,42 @@ export class AuthService {
     checkAuthStatus() {
         this.afAuth.authState.subscribe(user => {
             if (user) {
-                this.isAuth = true;
-                this.authStatus.next(true);
+                this.store.dispatch(new AUTH.SetAuthenticated);
+
             } else {
                 this.todoservice.cancelFBSubscriptions();
-                this.isAuth = false;
-                this.authStatus.next(false);
+                this.store.dispatch(new AUTH.SetUnAuthenticated);
             }
         });
     }
 
     registerUser(authData: AuthData) {
-        this.uiControlService.loadingState.next(true);
+        this.store.dispatch(new UI.StartLoading());
         this.afAuth.auth
             .createUserWithEmailAndPassword(authData.email, authData.password)
             .then(result => {
-                this.uiControlService.loadingState.next(false);
+                this.store.dispatch(new UI.StopLoading());
             })
             .catch(error => {
                 this.uiControlService.showMessage(error.message, null, 3000);
-                this.uiControlService.loadingState.next(false);
+                this.store.dispatch(new UI.StopLoading());
             })
     }
 
     login(authData: AuthData) {
-        this.uiControlService.loadingState.next(true);
+        this.store.dispatch(new UI.StartLoading());
         this.afAuth.auth
             .signInWithEmailAndPassword(authData.email, authData.password)
             .then(result => {
-                this.uiControlService.loadingState.next(false);
+                this.store.dispatch(new UI.StopLoading());
             })
             .catch(error => {
                 this.uiControlService.showMessage(error.message, null, 3000);
-                this.uiControlService.loadingState.next(false);
+                this.store.dispatch(new UI.StopLoading());
             });
     }
 
     logout() {
         this.afAuth.auth.signOut();
-    }
-
-    isAuthenticated() {
-        return this.isAuth;
     }
 }

@@ -16,7 +16,7 @@
     <p>A simple ToDo using Firebase and AngularFire</p>
   </section>
 </div>
-<div *ngIf="!isAuth">
+<div *ngIf="!(isAuth$ | async)">
   <h2>You need to be logged in to access all of above. If you do not have a login, then please
     <button mat-button routerLink="/signup">
       Register
@@ -24,6 +24,7 @@
     first.</h2>
 </div>
 
-<div *ngIf="isAuth">
-  <h2><-- You are already signed in please use the menu on the left to access the required features....</h2>
+<div *ngIf="isAuth$ | async">
+  <h2>
+    <-- You are already signed in please use the menu on the left to access the required features....</h2>
 </div>

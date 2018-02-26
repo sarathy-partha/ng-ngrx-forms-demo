@@ -1,12 +1,12 @@
-<mat-form-field *ngIf="!isLoading && todos">
+<mat-form-field *ngIf="!(isLoading$ | async) && todos">
   <mat-select placeholder="Status">
     <mat-option *ngFor="let status of todoStatus" [value]="status.id">
       {{ status.status }}
     </mat-option>
   </mat-select>
 </mat-form-field>
-<mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-list dense *ngIf="!isLoading && todos">
+<mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+<mat-list dense *ngIf="!(isLoading$ | async) && todos">
   <mat-list-item *ngFor="let todo of todos">
     <h1 matLine>{{todo.title}}</h1>
     <p matLine>{{todo.description}}</p>
@@ -15,4 +15,4 @@
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-list>
-<button *ngIf="!todos && !isLoading" type="button" mat-button (click)="showToDo()">Refresh Now</button>
+<button *ngIf="!todos && !(isLoading$ | async)" type="button" mat-button (click)="showToDo()">Refresh Now</button>

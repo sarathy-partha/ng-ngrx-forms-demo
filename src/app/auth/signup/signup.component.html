@@ -21,7 +21,7 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-checkbox required color="primary" ngModel name="tAndc" labelPosition="before">Agree to Terms & Conditions</mat-checkbox>
-    <button *ngIf="!isLoading" mat-raised-button color="primary" [disabled]="signupForm.invalid" type="submit">Sign Up</button>
-    <button *ngIf="isLoading" mat-raised-button color="primary" [disabled]="true">Please wait...</button>
+    <button *ngIf="!(isLoading$ | async)" mat-raised-button color="primary" [disabled]="signupForm.invalid" type="submit">Sign Up</button>
+    <button *ngIf="isLoading$ | async" mat-raised-button color="primary" [disabled]="true">Please wait...</button>
   </form>
 </section>

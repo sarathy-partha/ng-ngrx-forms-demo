@@ -18,8 +18,8 @@
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
         <mat-hint align="end">{{pwdInput.value?.length}} / 8</mat-hint>
       </mat-form-field>
-      <button #submitBtn *ngIf="!isLoading" mat-raised-button color="primary" [disabled]="signinForm.invalid" type="submit">Sign In</button>
-      <button *ngIf="isLoading" mat-raised-button color="primary" [disabled]="true">Please wait...</button>
+      <button #submitBtn *ngIf="!(isLoading$ | async)" mat-raised-button color="primary" [disabled]="signinForm.invalid" type="submit">Sign In</button>
+      <button *ngIf="isLoading$ | async" mat-raised-button color="primary" [disabled]="true">Please wait...</button>
     </form>
   </section>
 </div>

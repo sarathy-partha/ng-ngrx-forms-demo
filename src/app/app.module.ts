@@ -22,6 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducer';
+import * as UI from './common/reducers/ui.reducer';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
     AngularFirestoreModule,
+    StoreModule.forRoot(reducers),
   ],
   providers: [MoviesService, AuthService, SearchMoviesService, ToDoService, UIControlService],
   bootstrap: [AppComponent]

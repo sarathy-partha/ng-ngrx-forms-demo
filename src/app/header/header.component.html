@@ -8,18 +8,18 @@
       <button mat-icon-button>
         <mat-icon class="header-icon" routerLink="/">home</mat-icon>
       </button>
-      <button *ngIf="isAuth" routerLink="/movies/search" mat-icon-button>
+      <button *ngIf="isAuth$ | async" routerLink="/movies/search" mat-icon-button>
         <mat-icon class="header-icon">search</mat-icon>
       </button>
-      <button *ngIf="isAuth" routerLink="/signout" (click)="logout()" mat-raised-button mat-raised-button color="accent">
+      <button *ngIf="isAuth$ | async" routerLink="/signout" (click)="logout()" mat-raised-button mat-raised-button color="accent">
         Sign Out
         <mat-icon class="header-icon">exit_to_app</mat-icon>
       </button>
-      <button *ngIf="!isAuth" routerLink="/signup" mat-raised-button color="accent">
+      <button *ngIf="!(isAuth$ | async)" routerLink="/signup" mat-raised-button color="accent">
         Register
         <mat-icon class="header-icon">person_add</mat-icon>
       </button>
-      <button *ngIf="!isAuth" routerLink="/signin" mat-raised-button color="accent">
+      <button *ngIf="!(isAuth$ | async)" routerLink="/signin" mat-raised-button color="accent">
         Sign In
         <mat-icon class="header-icon">person</mat-icon>
       </button>
