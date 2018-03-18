@@ -25,7 +25,6 @@ export class ToDoService {
     fbSubs: Subscription[] = [];
 
     getToDoStatus() {
-        //this.uiControlService.loadingState.next(true);
         this.store.dispatch(new UI.StartLoading());
         this.fbSubs.push(this.todoDb
             .collection('Status')
@@ -39,13 +38,11 @@ export class ToDoService {
                 });
             })
             .subscribe((todoStatus: Status[]) => {
-                //this.uiControlService.loadingState.next(false);
                 this.store.dispatch(new UI.StartLoading());
                 this.todoStatus = todoStatus;
                 this.todoStatusChanged.next([...this.todoStatus]);
             }, error => {
                 this.todoStatusChanged.next(null);
-                //this.uiControlService.loadingState.next(false);
                 this.store.dispatch(new UI.StopLoading());
                 this.uiControlService.showMessage("Error fetching ToDo Status, please try again", null, 3000);
             }));
@@ -53,7 +50,6 @@ export class ToDoService {
 
 
     getToDos() {
-        //this.uiControlService.loadingState.next(true);
         this.store.dispatch(new UI.StartLoading());
         this.fbSubs.push(this.todoDb
             .collection('ToDo')
@@ -66,13 +62,11 @@ export class ToDoService {
                 });
             })
             .subscribe((todo: ToDo[]) => {
-                //this.uiControlService.loadingState.next(false);
                 this.store.dispatch(new UI.StopLoading());
                 this.todo = todo;
                 this.todosChanged.next([...this.todo]);
             }, error => {
                 this.todosChanged.next(null);
-                //this.uiControlService.loadingState.next(false);
                 this.store.dispatch(new UI.StopLoading());
                 this.uiControlService.showMessage("Error fetching ToDos, please try again", null, 3000);
             }));

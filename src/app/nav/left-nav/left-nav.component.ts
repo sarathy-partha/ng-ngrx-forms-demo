@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { menuItems } from './left-nav.data';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-left-nav',

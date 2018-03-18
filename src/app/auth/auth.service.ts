@@ -26,7 +26,7 @@ export class AuthService {
         this.afAuth.authState.subscribe(user => {
             if (user) {
                 this.store.dispatch(new AUTH.SetAuthenticated);
-                this.router.navigate(['']);
+                this.router.navigate(['/home']);
             } else {
                 this.todoservice.cancelFBSubscriptions();
                 this.store.dispatch(new AUTH.SetUnAuthenticated);
@@ -75,5 +75,6 @@ export class AuthService {
 
     logout() {
         this.afAuth.auth.signOut();
+        this.initiAuthListerner();
     }
 }

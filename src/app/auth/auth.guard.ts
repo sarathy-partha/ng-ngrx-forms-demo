@@ -20,6 +20,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     }
 
     canLoad(route: Route) {
+        console.log("Routing success");
         return this.store.select(appReducer.getAuthStatus).pipe(take(1));
     }
 }

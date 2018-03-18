@@ -4,8 +4,8 @@
   </mat-form-field>
 </div>
 <div class="table-container">
-  <div class="table-loading" *ngIf="isLoadingResults">
-    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  <div class="table-loading" *ngIf="isLoadingResults$ | async">
+    <mat-spinner *ngIf="isLoadingResults$ | async"></mat-spinner>
   </div>
   <mat-table #table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">

@@ -10,7 +10,7 @@
             </mat-expansion-panel-header>
             <mat-nav-list>
                   <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end" *ngFor="let menuItem of menuItems">
-                        <a matLine routerLink="{{menuItem.link}}">
+                        <a matLine routerLink="{{menuItem.link}}" routerLinkActive="active">
                               <span>{{menuItem.name}}</span>
                         </a>
                   </mat-list-item>

@@ -10,6 +10,11 @@ import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { of as observableOf } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
+import * as UI from '../../common/reducers/ui.actions';
+import * as appReducer from '../../app.reducer';
+import { Store } from "@ngrx/store";
+import { Observable } from 'rxjs/observable';
+import { UIControlService } from '../../common/uicontrol.service';
 
 @Component({
   selector: 'app-search-movies',
@@ -24,14 +29,19 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
 
   resultsLength = 0;
-  isLoadingResults = true;
+  isLoadingResults$: Observable<boolean>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private uiControlService: UIControlService,
+    private store: Store<{ ui: appReducer.State }>
+  ) { }
 
   ngOnInit() {
+    this.isLoadingResults$ = this.store.select(appReducer.getIsLoading);
     this.showMovies();
   }
 
@@ -43,37 +53,27 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
-    console.log(this.dataSource);
   }
 
   showMovies() {
-    /*     this.movieService.getMovies(this.paginator.pageIndex).subscribe({
-          next: (movies) => {
-            this.movie = movies;
-            this.dataSource.data = this.movie['results'];
-            this.isLoadingResults = false;
-            this.resultsLength = this.movie['total_results'];
-          }
-        }
-        );
-     */
     this.movieDatabase = new SearchMoviesService(this.http);
 
     this.paginator.page
       .pipe(
         startWith({}),
         switchMap(() => {
-          this.isLoadingResults = true;
+          this.store.dispatch(new UI.StartLoading);
           return this.movieDatabase!.getMovies(this.paginator.pageIndex);
         }),
         map(data => {
           // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
+          this.store.dispatch(new UI.StopLoading);
           this.resultsLength = data['total_results'];
           return data['results'];
         }),
         catchError(() => {
-          this.isLoadingResults = false;
+          this.store.dispatch(new UI.StopLoading);
+          this.uiControlService.showMessage("Error fetching movies, please try again", null, 3000);
           return observableOf([]);
         })
       ).subscribe(data => this.dataSource.data = data);
