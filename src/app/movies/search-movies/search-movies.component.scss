@@ -36,21 +36,15 @@
     left: 0;
     bottom: 56px;
     right: 0;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(235, 10, 10, 0.15);
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-
-  .mat-header-row {
-    background-color: rebeccapurple;
-    color: white;
-  }
-
   .mat-header-cell {
     padding: 10px;
-    color: white;
+   // color: white;
     font-size: 14px;
   }
 
@@ -63,12 +57,16 @@
   padding: 10px;
 }
 
-.mat-paginator {
-  background-color: rebeccapurple;
-  color: white;
+@mixin search-movies-theme($theme) {
+  // Extract whichever individual palettes you need from the theme.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  .mat-header-row {
+  background-color:mat-color($accent) !important;
+  color: black !important;
 }
 
-:host /deep/ .mat-paginator-decrement, :host /deep/ .mat-paginator-increment {
-  border-top: 2px solid white !important;
-  border-right: 2px solid white !important;
+.mat-paginator {
+background-color: mat-color($accent) !important;
+}
 }

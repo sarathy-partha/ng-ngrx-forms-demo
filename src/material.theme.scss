@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+
+@import 'app//nav/left-nav/left-nav.component.scss';
+@import 'app/movies/search-movies/search-movies.component.scss';
+@import 'app/app.component.scss';
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+$ng-app-primary: mat-palette($mat-indigo);
+$ng-app-accent:  mat-palette($mat-amber);
+
+// The warn palette is optional (defaults to red).
+$ng-app-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$ng-app-theme: mat-light-theme($ng-app-primary, $ng-app-accent, $ng-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($ng-app-theme);
+
+@include left-nav-theme($ng-app-theme);
+@include left-nav-main-theme($ng-app-theme);
+
+@include search-movies-theme($ng-app-theme);
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-green);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.ng-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.ng-dark-theme {
+  @include angular-material-theme($dark-theme);
+  @include left-nav-theme($dark-theme);
+  @include left-nav-main-theme($dark-theme);
+  @include search-movies-theme($dark-theme);
+}

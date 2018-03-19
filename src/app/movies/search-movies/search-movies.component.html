@@ -15,7 +15,7 @@
     <ng-container matColumnDef="popularity">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Popularity </mat-header-cell>
       <mat-cell *matCellDef="let movie">
-        <mat-progress-bar color="accent" mode="Determinate" value={{movie.popularity}}>
+        <mat-progress-bar mode="Determinate" value={{movie.popularity}}>
         </mat-progress-bar>
       </mat-cell>
     </ng-container>
