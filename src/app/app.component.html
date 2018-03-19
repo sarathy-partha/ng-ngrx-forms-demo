@@ -1,14 +1,5 @@
-<div class="container" [class.is-mobile]="mobileQuery.matches">
+<div [class]="theme$ | async" [class.is-mobile]="mobileQuery.matches">
     <app-header></app-header>
-
-    <!-- <div class="container" fxLayoutGap="5px" fxLayoutAlign="start stretch">
-    <div class="sideNavContainer" fxFlex="none">
-        <app-left-nav></app-left-nav>
-    </div>
-    <div class="bodyContainer" >
-        <router-outlet></router-outlet>
-    </div>
-</div> -->
     <button mat-icon-button class="toggleSideNav" (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
     </button>

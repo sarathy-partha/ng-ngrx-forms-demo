@@ -15,6 +15,7 @@ export const reducers: ActionReducerMap<State> = {
 
 export const getUIState = createFeatureSelector<uiReducer.State>('ui');
 export const getIsLoading = createSelector(getUIState, uiReducer.getIsLoading);
+export const getCurrentTheme = createSelector(getUIState, uiReducer.getCurrentTheme);
 
 export const getAuthState = createFeatureSelector<authReducer.State>('auth');
 export const getAuthStatus = createSelector(getAuthState, authReducer.getAuthStatus);

@@ -6,10 +6,43 @@
                   </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-nav-list style="padding-top: 0px !important">
-                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end" 
-                  *ngFor="let menuItem of menuItems">
+                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end" *ngFor="let menuItem of menuItems">
                         <a matLine routerLink="{{menuItem.link}}" routerLinkActive="active">
                               <span>{{menuItem.name}}</span>
+                        </a>
+                  </mat-list-item>
+            </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel expanded>
+            <mat-expansion-panel-header>
+                  <mat-panel-title>
+                        <span>Theme</span>
+                  </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list style="padding-top: 0px !important">
+                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
+                        <a matLine (click)="setTheme('container')" routerLinkActive="active">
+                              <span>Default</span>
+                        </a>
+                  </mat-list-item>
+                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
+                        <a matLine (click)="setTheme('container indigo')" routerLinkActive="active">
+                              <span>Indigo Light</span>
+                        </a>
+                  </mat-list-item>
+                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
+                        <a matLine (click)="setTheme('container bluegray')" routerLinkActive="active">
+                              <span>Blue Gray Dark</span>
+                        </a>
+                  </mat-list-item>
+                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
+                        <a matLine (click)="setTheme('container deeppurple')" routerLinkActive="active">
+                              <span>Deep Purple Light</span>
+                        </a>
+                  </mat-list-item>
+                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
+                        <a matLine (click)="setTheme('container amber')" routerLinkActive="active">
+                              <span>Amber Dark</span>
                         </a>
                   </mat-list-item>
             </mat-nav-list>

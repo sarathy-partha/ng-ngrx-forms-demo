@@ -19,3 +19,7 @@
     margin-left: 40px;
     background-color: white;
   }
+
+  .mat-toolbar-multiple-rows {
+    min-height: 64px !important;
+  }

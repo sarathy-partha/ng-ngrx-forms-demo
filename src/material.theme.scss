@@ -14,7 +14,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://www.google.com/design/spec/style/color.html
-$ng-app-primary: mat-palette($mat-indigo);
+$ng-app-primary: mat-palette($mat-green);
 $ng-app-accent:  mat-palette($mat-amber);
 
 // The warn palette is optional (defaults to red).
@@ -39,12 +39,45 @@ $dark-accent:  mat-palette($mat-green);
 $dark-warn:    mat-palette($mat-deep-orange);
 $dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
-// Include the alternative theme styles inside of a block with a CSS class. You can make this
-// CSS class whatever you want. In this example, any component inside of an element with
-// `.ng-dark-theme` will be affected by this alternate dark theme instead of the default theme.
-.ng-dark-theme {
+$indigo-primary: mat-palette($mat-indigo);
+$indigo-accent:  mat-palette($mat-gray);
+$indigo-warn:    mat-palette($mat-deep-orange);
+$indigo-theme:   mat-light-theme($indigo-primary, $indigo-accent, $indigo-warn);
+
+$deeppurple-primary: mat-palette($mat-deep-purple);
+$deeppurple-accent:  mat-palette($mat-orange);
+$deeppurple-warn:    mat-palette($mat-deep-orange);
+$deeppurple-theme:   mat-light-theme($deeppurple-primary, $deeppurple-accent, $deeppurple-warn);
+
+$amber-primary: mat-palette($mat-amber);
+$amber-accent:  mat-palette($mat-blue-gray);
+$amber-warn:    mat-palette($mat-deep-orange);
+$amber-theme:   mat-dark-theme($amber-primary, $amber-accent, $amber-warn);
+
+.bluegray {
   @include angular-material-theme($dark-theme);
   @include left-nav-theme($dark-theme);
   @include left-nav-main-theme($dark-theme);
   @include search-movies-theme($dark-theme);
 }
+
+.indigo {
+    @include angular-material-theme($indigo-theme);
+    @include left-nav-theme($indigo-theme);
+    @include left-nav-main-theme($indigo-theme);
+    @include search-movies-theme($indigo-theme);
+  }
+
+  .deeppurple {
+    @include angular-material-theme($deeppurple-theme);
+    @include left-nav-theme($deeppurple-theme);
+    @include left-nav-main-theme($deeppurple-theme);
+    @include search-movies-theme($deeppurple-theme);
+  }
+
+  .amber {
+    @include angular-material-theme($amber-theme);
+    @include left-nav-theme($amber-theme);
+    @include left-nav-main-theme($amber-theme);
+    @include search-movies-theme($amber-theme);
+  }
