@@ -1,6 +1,6 @@
 {
   "name": "ng-ngrx-forms-lazyloading",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "release": "standard-version"
+    "release": "standard-version && git push — follow-tags origin master && npm publish"
   },
   "private": true,
   "dependencies": {
