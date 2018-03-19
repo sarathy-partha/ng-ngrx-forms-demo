@@ -1,14 +1,16 @@
-<div fxFlex fxLayoutAlign="center stretch" fxLayout="row wrap" fxLayoutGap="10px" style="margin-bottom: 20px">
-    <mat-card *ngFor="let movie of movie$ | async" class="movie-card">
-        <mat-card-header>
-            <mat-card-title class="mat-headline">{{ movie.title }}</mat-card-title>
-            <mat-card-subtitle>Released Date: {{movie.release_date | date}}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="{{MOVIE_URL}}{{movie.poster_path}}" alt="{{movie.title}}" />
-        <mat-card-content fxLayout>
-            <p>
-                {{movie.overview}}
-            </p>
-        </mat-card-content>
-    </mat-card>
-</div>
+<ng-container *ngIf='movie$ | async as movies'>
+    <div [@cardAnimation]="movies.length" fxFlex fxLayoutAlign="center stretch" fxLayout="row wrap" fxLayoutGap="10px" style="margin-bottom: 20px">
+        <mat-card *ngFor="let movie of movies"  class="movie-card">
+            <mat-card-header>
+                <mat-card-title class="mat-headline">{{ movie.title }}</mat-card-title>
+                <mat-card-subtitle>Released Date: {{movie.release_date | date}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{MOVIE_URL}}{{movie.poster_path}}" alt="{{movie.title}}" />
+            <mat-card-content fxLayout>
+                <p>
+                    {{movie.overview}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</ng-container>

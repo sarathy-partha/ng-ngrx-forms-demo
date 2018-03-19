@@ -1,24 +1,28 @@
-  <mat-toolbar fxLayout color="primary" class="topNav">
-    <mat-toolbar-row>
-      <div fxLayoutAlign="center stretch" fxLayout="row wrap" fxLayoutGap="10px">
-        <a class="logo">FiniteLoop</a>
-      </div>
-      <div fxFlex fxLayout="row wrap" fxLayoutAlign="end" fxLayoutGap="10px">
-        <button mat-icon-button>
-          <mat-icon class="header-icon" routerLink="/">home</mat-icon>
-        </button>
-        <button *ngIf="isAuth$ | async" routerLink="/movies/search" mat-icon-button>
-          <mat-icon class="header-icon">search</mat-icon>
-        </button>
-        <button *ngIf="isAuth$ | async" routerLink="/signout" (click)="logout()" mat-icon-button color="inherit">
-          <mat-icon class="header-icon">exit_to_app</mat-icon>
-        </button>
-        <button *ngIf="!(isAuth$ | async)" routerLink="/signup" mat-icon-button color="inherit">
-          <mat-icon class="header-icon">person_add</mat-icon>
-        </button>
-        <button *ngIf="!(isAuth$ | async)" routerLink="/signin" mat-icon-button color="inherit">
-          <mat-icon class="header-icon">person</mat-icon>
-        </button>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
+<mat-toolbar fxLayout color="primary" class="topNav">
+  <mat-toolbar-row>
+    <div fxLayoutAlign="center stretch" fxLayout="row wrap" fxLayoutGap="10px">
+      <a class="logo">FiniteLoop</a>
+    </div>
+    <div fxFlex fxLayout="row wrap" fxLayoutAlign="end" fxLayoutGap="10px">
+      <button mat-icon-button>
+        <mat-icon class="header-icon" routerLink="/">home</mat-icon>
+      </button>
+      <button *ngIf="isAuth$ | async" routerLink="/movies/search" mat-icon-button>
+        <mat-icon class="header-icon">search</mat-icon>
+      </button>
+      <button *ngIf="isAuth$ | async" routerLink="/signout" (click)="logout()" mat-icon-button color="inherit">
+        <mat-icon class="header-icon">exit_to_app</mat-icon>
+      </button>
+      <button *ngIf="!(isAuth$ | async)" routerLink="/signup" mat-icon-button color="inherit">
+        <mat-icon class="header-icon">person_add</mat-icon>
+      </button>
+      <button *ngIf="!(isAuth$ | async)" routerLink="/signin" mat-icon-button color="inherit">
+        <mat-icon class="header-icon">person</mat-icon>
+      </button>
+      <a mat-icon-button href="https://github.com/partha360/ng-ngrx-forms-demo" target="_new">
+        <mat-icon svgIcon="github" class="header-icon" >
+        </mat-icon>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
