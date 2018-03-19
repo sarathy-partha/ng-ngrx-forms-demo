@@ -1,10 +1,27 @@
-<app-header></app-header>
+<div class="container" [class.is-mobile]="mobileQuery.matches">
+    <app-header></app-header>
 
-<div class="container" fxLayoutGap="5px" fxLayoutAlign="start stretch">
+    <!-- <div class="container" fxLayoutGap="5px" fxLayoutAlign="start stretch">
     <div class="sideNavContainer" fxFlex="none">
         <app-left-nav></app-left-nav>
     </div>
     <div class="bodyContainer" >
         <router-outlet></router-outlet>
     </div>
+</div> -->
+    <button mat-icon-button class="toggleSideNav" (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-sidenav-container class="sideNavContainer" [style.marginTop.px]="mobileQuery.matches ? 10 : 0">
+        <mat-sidenav #snav 
+        [mode]="mobileQuery.matches ? 'over' : 'side'" 
+        [fixedInViewport]="mobileQuery.matches" 
+        fixedTopGap="0"
+            [opened]="mobileQuery.matches ? 'false' : 'true'">
+            <app-left-nav></app-left-nav>
+        </mat-sidenav>
+        <mat-sidenav-content class="bodyContainer">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>

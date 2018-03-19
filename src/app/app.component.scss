@@ -1,0 +1,56 @@
+@import 'nav/left-nav/left-nav.component.scss';
+@include mat-core();
+$app-primary: mat-palette($mat-indigo);
+$app-accent:  mat-palette($mat-pink);
+$app-warn:    mat-palette($mat-deep-orange);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+@include left-nav-theme($app-theme);
+
+.bodyContainer {
+  padding: 10px;
+  margin-top: 64px;
+  height: calc(100% - 64px);
+  overflow-y: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .is-mobile {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  
+  h1.example-app-name {
+    margin-left: 8px;
+  }
+
+  .sideNavContainer {
+      flex: 1;
+  }
+
+  .mat-sidenav {
+      background-color: mat-color($app-primary);
+  }
+  
+  .is-mobile .sideNavContainer {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+  
+  .toggleSideNav {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      z-index: 3;
+      background-color: mat-color($app-accent);
+  }

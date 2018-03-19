@@ -1,4 +1,4 @@
-# NgMovies
+# Ng | ngrx | Reactive Forms | ngrx Store, Side Effects | Lazyloding of state, modules...demo app
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
 

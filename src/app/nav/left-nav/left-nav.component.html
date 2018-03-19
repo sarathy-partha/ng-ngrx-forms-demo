@@ -1,14 +1,11 @@
-<aside>
+<aside style="margin-top: 64px">
       <mat-expansion-panel expanded>
             <mat-expansion-panel-header>
                   <mat-panel-title>
-                        <span>Dashboard</span>
+                        <span>Main Menu</span>
                   </mat-panel-title>
-                  <mat-panel-description>
-                        <mat-icon>home</mat-icon>
-                  </mat-panel-description>
             </mat-expansion-panel-header>
-            <mat-nav-list>
+            <mat-nav-list style="padding-top: 0px !important">
                   <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end" *ngFor="let menuItem of menuItems">
                         <a matLine routerLink="{{menuItem.link}}" routerLinkActive="active">
                               <span>{{menuItem.name}}</span>

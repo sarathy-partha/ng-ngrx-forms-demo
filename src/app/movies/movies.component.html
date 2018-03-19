@@ -1,4 +1,4 @@
-<div fxLayoutWrap fxLayoutAlign="center strech" fxLayoutGap="10px" style="margin-bottom: 20px">
+<div fxFlex fxLayoutAlign="center stretch" fxLayout="row wrap" fxLayoutGap="10px" style="margin-bottom: 20px">
     <mat-card *ngFor="let movie of movie$ | async" class="movie-card">
         <mat-card-header>
             <mat-card-title class="mat-headline">{{ movie.title }}</mat-card-title>
