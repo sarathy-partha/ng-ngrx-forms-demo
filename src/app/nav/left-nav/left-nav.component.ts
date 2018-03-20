@@ -16,7 +16,7 @@ import { Subscription, Observable } from 'rxjs';
 export class LeftNavComponent implements OnInit {
   options: {};
   menuItems = menuItems;
-  theme: string;
+  theme: string = 'container';
   theme$: Observable<string>;
 
   constructor(
@@ -24,6 +24,8 @@ export class LeftNavComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.store.dispatch(new UI.SetTheme(this.theme));
+    this.theme$ = this.store.select(appReducer.getCurrentTheme);
   }
 
   setTheme(theme) {
