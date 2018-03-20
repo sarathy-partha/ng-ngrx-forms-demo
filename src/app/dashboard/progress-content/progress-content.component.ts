@@ -10,7 +10,6 @@ import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 export class ProgressContentComponent implements OnInit {
 
   outlineText : String;
-  //percent: number;
   @Input() percent: number;
 
   @ViewChild('Progress') canvasRef: ElementRef;

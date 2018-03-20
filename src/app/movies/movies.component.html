@@ -1,5 +1,5 @@
 <ng-container *ngIf='movie$ | async as movies'>
-    <div [@cardAnimation]="movies.length" fxFlex fxLayoutAlign="center stretch" fxLayout="row wrap" fxLayoutGap="10px" style="margin-bottom: 20px">
+    <div [@cardAnimation]="movies.length" fxFlex fxLayoutAlign="space-around stretch" fxLayout="row wrap" fxLayoutGap="10px" style="margin-bottom: 20px">
         <mat-card *ngFor="let movie of movies"  class="movie-card">
             <mat-card-header>
                 <mat-card-title class="mat-headline">{{ movie.title }}</mat-card-title>

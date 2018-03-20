@@ -24,31 +24,31 @@
                   fxFlexAlign="end" 
                   [class.active]="(theme$ | async ) == 'container'">
                         <a matLine (click)="setTheme('container')">
-                              <span>Default</span>
+                              Default
                         </a>
                   </mat-list-item>
                   <mat-list-item [class.active]="(theme$ | async ) == 'container indigo'" 
                   fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
                         <a matLine (click)="setTheme('container indigo')">
-                              <span>Indigo Light</span>
+                              Indigo Light
                         </a>
                   </mat-list-item>
                   <mat-list-item [class.active]="(theme$ | async ) == 'container bluegray'" 
                   fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
                         <a matLine (click)="setTheme('container bluegray')">
-                              <span>Blue Gray Dark</span>
+                              Blue Gray Dark
                         </a>
                   </mat-list-item>
                   <mat-list-item [class.active]="(theme$ | async ) == 'container deeppurple'" 
                   fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
                         <a matLine (click)="setTheme('container deeppurple')">
-                              <span>Deep Purple Light</span>
+                              Deep Purple Light
                         </a>
                   </mat-list-item>
                   <mat-list-item [class.active]="(theme$ | async ) == 'container amber'" 
                   fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end">
                         <a matLine (click)="setTheme('container amber')">
-                              <span>Amber Dark</span>
+                              Amber Dark
                         </a>
                   </mat-list-item>
             </mat-nav-list>

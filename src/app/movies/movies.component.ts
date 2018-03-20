@@ -21,7 +21,7 @@ import * as Movies from './actions/movies.actions';
           [
             style({ opacity: 0, transform: 'translateY(-15px)' }),
             stagger(
-              '50ms',
+              '100ms',
               animate(
                 '550ms ease-out',
                 style({ opacity: 1, transform: 'translateY(0px)' })
@@ -30,7 +30,7 @@ import * as Movies from './actions/movies.actions';
           ],
           { optional: true }
         ),
-        query(':leave', animate('50ms', style({ opacity: 0 })), {
+        query(':leave', animate('100ms', style({ opacity: 0 })), {
           optional: true
         })
       ])
