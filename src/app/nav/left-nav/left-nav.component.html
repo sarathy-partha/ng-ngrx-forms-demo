@@ -5,10 +5,10 @@
                         <span>Main Menu</span>
                   </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-nav-list style="padding-top: 0px !important">
-                  <mat-list-item fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end" *ngFor="let menuItem of menuItems">
-                        <a matLine routerLink="{{menuItem.link}}" routerLinkActive="active">
-                              <span>{{menuItem.name}}</span>
+            <mat-nav-list style="padding: 0px !important; width: 100%">
+                  <mat-list-item  routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" fxLayout="column" fxLayoutAlign="end end" fxFlexAlign="end" *ngFor="let menuItem of menuItems">
+                        <a matLine routerLink="{{menuItem.link}}">
+                              {{menuItem.name}}
                         </a>
                   </mat-list-item>
             </mat-nav-list>

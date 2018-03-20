@@ -48,13 +48,13 @@
     font-size: 14px;
   }
 
-  :host /deep/ .mat-progress-bar {
-    height: 20px;
-  }
-
   /* Column Widths */
 .mat-cell {
   padding: 10px;
+}
+
+:host /deep/ .mat-progress-bar {
+  height: 20px;
 }
 
 @mixin search-movies-theme($theme) {
@@ -62,11 +62,12 @@
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   .mat-header-row {
-  background-color:mat-color($accent) !important;
-  color: black !important;
+  background-color:mat-color($primary) !important;
+  //color: black !important;
 }
 
 .mat-paginator {
-background-color: mat-color($accent) !important;
+background-color: mat-color($primary) !important;
 }
+
 }

@@ -3,7 +3,7 @@ export const
         {
             name: 'Home',
             icon: '',
-            link: '/'
+            link: '/home'
         },
         {
             name: 'Upcoming Movies',

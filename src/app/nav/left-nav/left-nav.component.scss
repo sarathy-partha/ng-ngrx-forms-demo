@@ -6,6 +6,14 @@ span {
   padding-top: 0px !important;
 }
 
+.mat-expansion-panel-body {
+  padding: 0px !important;
+}
+  .mat-list-item-content {
+    width: 100%;
+    text-align: right;
+  }
+
 // Define a mixin that accepts a theme and outputs the color styles for the component.
 @mixin left-nav-theme($theme) {
   // Extract whichever individual palettes you need from the theme.
@@ -15,5 +23,9 @@ span {
   // Use mat-color to extract individual colors from a palette as necessary.
   .mat-expansion-panel{
     background-color: mat-color($accent) !important;
+  }
+
+  .active {
+    background-color: mat-color($primary) !important;
   }
 }

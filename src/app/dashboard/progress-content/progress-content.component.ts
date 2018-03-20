@@ -4,7 +4,7 @@ import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 @Component({
   selector: 'app-progress-content',
   templateUrl: './progress-content.component.html',
-  styleUrls: ['./progress-content.component.css']
+  styleUrls: ['./progress-content.component.scss']
 })
 
 export class ProgressContentComponent implements OnInit {
