@@ -15,7 +15,7 @@ export class StopLoading implements Action {
 
 export class SetTheme implements Action {
     readonly type = SET_THEME;
-    constructor(public payload: string) { console.log(payload)}
+    constructor(public payload: string) { }
 }
 
 export type UIActions = StartLoading | StopLoading | SetTheme;

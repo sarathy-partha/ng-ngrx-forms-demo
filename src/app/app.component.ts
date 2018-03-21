@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
   constructor(private authservice: AuthService,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
-    private store: Store<{ ui: appReducer.State }>) {
+    private store: Store<{ ui: appReducer.State }>
+  ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -31,6 +32,6 @@ export class AppComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.theme$ = this.store.select(appReducer.getCurrentTheme);
   }
-
+  
   title = 'app';
 }
