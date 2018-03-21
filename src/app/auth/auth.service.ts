@@ -57,6 +57,7 @@ export class AuthService {
             .createUserWithEmailAndPassword(authData.email, authData.password)
             .then(result => {
                 this.store.dispatch(new UI.StopLoading());
+                this.router.navigate(['/home']);
             })
             .catch(error => {
                 this.uiControlService.showMessage(error.message, null, 3000);
@@ -70,6 +71,7 @@ export class AuthService {
             .signInWithEmailAndPassword(authData.email, authData.password)
             .then(result => {
                 this.store.dispatch(new UI.StopLoading());
+                this.router.navigate(['/home']);
             })
             .catch(error => {
                 this.uiControlService.showMessage(error.message, null, 3000);
