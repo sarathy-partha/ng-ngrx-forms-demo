@@ -26,7 +26,7 @@ export class AuthService {
         this.afAuth.authState.subscribe(user => {
             if (user) {
                 this.store.dispatch(new AUTH.SetAuthenticated);
-                this.router.navigate(['/home']);
+                //this.router.navigate(['/home']);
             } else {
                 this.todoservice.cancelFBSubscriptions();
                 this.store.dispatch(new AUTH.SetUnAuthenticated);

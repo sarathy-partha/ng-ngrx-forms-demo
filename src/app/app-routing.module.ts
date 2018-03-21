@@ -10,22 +10,25 @@ const routes: Routes = [
     {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule',
-        canLoad: [AuthGuard]
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
     },
     {
         path: 'movies',
         loadChildren: './movies/movies.module#MoviesModule',
-        canLoad: [AuthGuard]
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
     },
     {
         path: 'todo',
         loadChildren: './todo/todo.module#ToDoModule',
-        canLoad: [AuthGuard]
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { useHash: true })],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
     providers: [AuthGuard]
 })
