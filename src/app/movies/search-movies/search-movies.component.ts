@@ -63,7 +63,7 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
         startWith({}),
         switchMap(() => {
           this.store.dispatch(new UI.StartLoading());
-          return this.movieDatabase!.getMovies(this.paginator.pageIndex);
+          return this.movieDatabase.getMovies(this.paginator.pageIndex);
         }),
         map(data => {
           // Flip flag to show that loading has finished.

@@ -19,16 +19,17 @@ export class ProgressContentComponent implements OnInit {
   }
 
   showProgressContent(percent) {
-    let ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
+    const ctx: CanvasRenderingContext2D = this.canvasRef.nativeElement.getContext('2d');
     this.outlineText = 'Text';
     let i = 0; // use it for Amount loaded
-    let start = 4.72; //From where to start position of progress;
-    let cw = ctx.canvas.width / 2; //to get x cordinate;
-    let ch = ctx.canvas.height / 2; // to get y coordinate;
+    const start = 4.72; //From where to start position of progress;
+    const cw = ctx.canvas.width / 2; //to get x cordinate;
+    const ch = ctx.canvas.height / 2; // to get y coordinate;
     let diff;
 
     if (percent <= 50) this.progressPercent.nativeElement.className = 'red percent';
     else this.progressPercent.nativeElement.className = 'green percent';
+    const bar = setInterval(progressBar, 0);
 
     function progressBar() {
       // Draw the clip path that will mask everything else
@@ -66,8 +67,6 @@ export class ProgressContentComponent implements OnInit {
 
       //calculated rate level to increase progress bar.
     }
-
-    var bar = setInterval(progressBar, 0);
     //var bar = progressBar(this.percent);
   }
 }

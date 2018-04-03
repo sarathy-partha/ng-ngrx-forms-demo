@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import { menuItems } from './left-nav.data';
 import { RouterLink } from '@angular/router';
@@ -5,7 +6,7 @@ import { RouterLink } from '@angular/router';
 import * as UI from '../../common/reducers/ui.actions';
 import * as appReducer from '@app/app.reducer';
 import { Store } from '@ngrx/store';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-left-nav',
@@ -15,7 +16,7 @@ import { Subscription, Observable } from 'rxjs';
 export class LeftNavComponent implements OnInit {
   options: {};
   menuItems = menuItems;
-  theme: string = 'container';
+  theme = 'container';
   theme$: Observable<string>;
 
   constructor(private store: Store<{ ui: appReducer.State }>) {}
