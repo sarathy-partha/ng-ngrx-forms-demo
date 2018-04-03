@@ -12,16 +12,13 @@ import { Subscription, Observable } from 'rxjs';
   templateUrl: './left-nav.component.html',
   styleUrls: ['./left-nav.component.scss']
 })
-
 export class LeftNavComponent implements OnInit {
   options: {};
   menuItems = menuItems;
   theme: string = 'container';
   theme$: Observable<string>;
 
-  constructor(
-    private store: Store<{ ui: appReducer.State }>
-  ) { }
+  constructor(private store: Store<{ ui: appReducer.State }>) {}
 
   ngOnInit() {
     this.store.dispatch(new UI.SetTheme(this.theme));

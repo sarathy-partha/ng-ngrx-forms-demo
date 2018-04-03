@@ -6,12 +6,13 @@ describe('SearchMoviesComponent', () => {
   let component: SearchMoviesComponent;
   let fixture: ComponentFixture<SearchMoviesComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SearchMoviesComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [SearchMoviesComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchMoviesComponent);

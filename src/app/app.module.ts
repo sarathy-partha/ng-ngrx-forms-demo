@@ -28,12 +28,7 @@ import { reducers } from '@app/app.reducer';
 import { environment } from '@env/environment';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    LeftNavComponent,
-    AppComponent,
-    HomeComponent,
-  ],
+  declarations: [HeaderComponent, LeftNavComponent, AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -44,9 +39,9 @@ import { environment } from '@env/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
     AngularFirestoreModule,
-    StoreModule.forRoot(reducers),
+    StoreModule.forRoot(reducers)
   ],
   providers: [MoviesService, AuthService, SearchMoviesService, ToDoService, UIControlService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

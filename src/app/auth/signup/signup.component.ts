@@ -2,26 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs/Subscription';
-import * as appReducer from '../../app.reducer'
+import * as appReducer from '../../app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css'],
+  styleUrls: ['./signup.component.css']
 })
-
 export class SignupComponent implements OnInit {
   hide = true;
   maxDate;
   isLoading$: Observable<boolean>;
   private loadingSubs: Subscription;
 
-  constructor(
-    private authService: AuthService,
-    private store: Store<{ ui: appReducer.State }>,
-  ) { }
+  constructor(private authService: AuthService, private store: Store<{ ui: appReducer.State }>) {}
 
   ngOnInit() {
     this.isLoading$ = this.store.select(appReducer.getIsLoading);
@@ -32,7 +28,7 @@ export class SignupComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.authService.registerUser({
       email: form.value.email,
-      password: form.value.password,
+      password: form.value.password
     });
   }
 }

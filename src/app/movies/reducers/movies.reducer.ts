@@ -1,34 +1,40 @@
-import { Action, createFeatureSelector, createSelector } from "@ngrx/store";
+import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
 import { MoviesActions, SET_UPCOMING_MOVIES } from '../actions/movies.actions';
-import { Movie } from "../movies.model";
+import { Movie } from '../movies.model';
 import * as appReducer from '../../app.reducer';
 
 export interface UpcomingMoviesState {
-    upComingMovies: Movie[];
+  upComingMovies: Movie[];
 }
 
 export interface State extends appReducer.State {
-    Movies: UpcomingMoviesState;
+  Movies: UpcomingMoviesState;
 }
 
 const initialState: UpcomingMoviesState = {
-    upComingMovies: []
-}
+  upComingMovies: []
+};
 
 export function moviesReducer(state = initialState, action: MoviesActions) {
-    switch (action.type) {
-        case SET_UPCOMING_MOVIES: {
-            return {
-                ...state,
-                upComingMovies: action.payload
-            };
-        }
-        default: return state
+  switch (action.type) {
+    case SET_UPCOMING_MOVIES: {
+      return {
+        ...state,
+        upComingMovies: action.payload
+      };
     }
+    default:
+      return state;
+  }
 }
 
 export const getUpComingMoviesState = createFeatureSelector<UpcomingMoviesState>('Movies');
 
-export const getUpComingMovies = createSelector(getUpComingMoviesState, (state: UpcomingMoviesState) => state.upComingMovies);
-export const isUpComingMovies = createSelector(getUpComingMoviesState, (state: UpcomingMoviesState) => state.upComingMovies != null);
-
+export const getUpComingMovies = createSelector(
+  getUpComingMoviesState,
+  (state: UpcomingMoviesState) => state.upComingMovies
+);
+export const isUpComingMovies = createSelector(
+  getUpComingMoviesState,
+  (state: UpcomingMoviesState) => state.upComingMovies != null
+);

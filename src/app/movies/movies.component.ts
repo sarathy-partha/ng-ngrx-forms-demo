@@ -20,13 +20,7 @@ import * as Movies from './actions/movies.actions';
           ':enter',
           [
             style({ opacity: 0, transform: 'translateY(-15px)' }),
-            stagger(
-              '100ms',
-              animate(
-                '550ms ease-out',
-                style({ opacity: 1, transform: 'translateY(0px)' })
-              )
-            )
+            stagger('100ms', animate('550ms ease-out', style({ opacity: 1, transform: 'translateY(0px)' })))
           ],
           { optional: true }
         ),
@@ -37,18 +31,13 @@ import * as Movies from './actions/movies.actions';
     ])
   ]
 })
-
 export class MoviesComponent implements OnInit {
-
-  MOVIE_URL = "http://image.tmdb.org/t/p/w185/";
+  MOVIE_URL = 'http://image.tmdb.org/t/p/w185/';
 
   movie$: Observable<Movie[]>;
   upComingMovies$: Observable<boolean>;
 
-  constructor(
-    private movieService: MoviesService,
-    private moviesStore: Store<moviesReducer.State>,
-  ) { }
+  constructor(private movieService: MoviesService, private moviesStore: Store<moviesReducer.State>) {}
 
   ngOnInit() {
     this.upComingMovies$ = this.moviesStore.select(moviesReducer.isUpComingMovies);

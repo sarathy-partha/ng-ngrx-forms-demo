@@ -1,9 +1,9 @@
 .dashboard {
- // background-color: whitesmoke;
+  // background-color: whitesmoke;
   height: 100%;
 }
 
-:host /deep/.mat-tab-label{
+:host /deep/.mat-tab-label {
   height: 100% !important;
   opacity: 1;
   width: 100%;
@@ -39,8 +39,8 @@
   border-top: 0px solid;
   border-left: 0px solid;
   border-right: 0px solid;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
-  border-radius:10px 10px 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 10px 10px 10px;
   background-color: gray !important;
   z-index: 1;
 }
@@ -60,8 +60,8 @@
   border-top: 0px solid;
   border-left: 0px solid;
   border-right: 0px solid;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
-  border-radius:0px 10px 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 10px 10px 10px;
   background-color: gray !important;
   z-index: 1;
 }
@@ -71,8 +71,8 @@
   border-top: 0px solid;
   border-left: 0px solid;
   border-right: 0px solid;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
-  border-radius:10px 0px 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px 0px 10px 10px;
   background-color: gray !important;
   z-index: 1;
 }

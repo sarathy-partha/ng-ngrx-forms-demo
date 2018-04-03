@@ -10,14 +10,10 @@ import * as appReducer from '../app.reducer';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
 export class HomeComponent implements OnInit {
   isAuth$: Observable<boolean>;
-  
-  constructor(
-    private authService: AuthService,
-    private store: Store<appReducer.State>,
-  ) { }
+
+  constructor(private authService: AuthService, private store: Store<appReducer.State>) {}
 
   ngOnInit() {
     this.authService.checkAuthStatus();

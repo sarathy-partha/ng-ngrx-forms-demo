@@ -4,14 +4,14 @@ import * as authReducer from './auth/reducers/auth.reducer';
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
 
 export interface State {
-    ui: uiReducer.State;
-    auth: authReducer.State;
+  ui: uiReducer.State;
+  auth: authReducer.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-    ui: uiReducer.uiReducer,
-    auth: authReducer.authReducer,
-}
+  ui: uiReducer.uiReducer,
+  auth: authReducer.authReducer
+};
 
 export const getUIState = createFeatureSelector<uiReducer.State>('ui');
 export const getIsLoading = createSelector(getUIState, uiReducer.getIsLoading);

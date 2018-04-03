@@ -1,5 +1,5 @@
 span {
- font-size: 14pt;
+  font-size: 14pt;
 }
 
 .mat-nav-list {
@@ -9,10 +9,10 @@ span {
 .mat-expansion-panel-body {
   padding: 0px !important;
 }
-  .mat-list-item-content {
-    width: 100%;
-    text-align: right;
-  }
+.mat-list-item-content {
+  width: 100%;
+  text-align: right;
+}
 
 // Define a mixin that accepts a theme and outputs the color styles for the component.
 @mixin left-nav-theme($theme) {
@@ -21,7 +21,7 @@ span {
   $accent: map-get($theme, accent);
 
   // Use mat-color to extract individual colors from a palette as necessary.
-  .mat-expansion-panel{
+  .mat-expansion-panel {
     background-color: mat-color($accent) !important;
   }
 

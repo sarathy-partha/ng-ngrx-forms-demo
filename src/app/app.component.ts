@@ -1,9 +1,10 @@
+import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '@app/auth/auth.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 
 import * as appReducer from './app.reducer';
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs/observable';
 import { Store } from '@ngrx/store';
 
 @Component({
@@ -12,12 +13,14 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  title = 'app';
   mobileQuery: MediaQueryList;
   theme$: Observable<string>;
 
   private _mobileQueryListener: () => void;
 
-  constructor(private authservice: AuthService,
+  constructor(
+    private authservice: AuthService,
     changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private store: Store<{ ui: appReducer.State }>
@@ -32,6 +35,4 @@ export class AppComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.theme$ = this.store.select(appReducer.getCurrentTheme);
   }
-  
-  title = 'app';
 }

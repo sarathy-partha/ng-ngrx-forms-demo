@@ -4,10 +4,10 @@ $l-min: 50;
 $l-max: 60;
 
 @for $i from 1 through 100 {
-.movie-card:nth-child(#{$i}) {
+  .movie-card:nth-child(#{$i}) {
     width: 310px;
     margin-bottom: 10px;
-    background-color: hsl(random(360),$s-min+random($s-max+-$s-min),$l-min+random($l-max+-$l-min));
+    background-color: hsl(random(360), $s-min + random($s-max + -$s-min), $l-min + random($l-max + -$l-min));
   }
 }
 

@@ -13,20 +13,20 @@ import { Store } from '@ngrx/store';
 })
 export class TodoComponent implements OnInit, OnDestroy {
   todoStatus: Status[];
-  todoSubscription; todoStatusSubscription: Subscription;
+  todoSubscription;
+  todoStatusSubscription: Subscription;
   todos: ToDo[];
   isLoading$: Observable<boolean>;
 
-  constructor(
-    private todoService: ToDoService,
-    private store: Store<appReducer.State>,
-  ) { }
+  constructor(private todoService: ToDoService, private store: Store<appReducer.State>) {}
 
   ngOnInit() {
     this.isLoading$ = this.store.select(appReducer.getIsLoading);
-    this.todoStatusSubscription = this.todoService.todoStatusChanged.subscribe(todoStatus => this.todoStatus = todoStatus);
+    this.todoStatusSubscription = this.todoService.todoStatusChanged.subscribe(
+      todoStatus => (this.todoStatus = todoStatus)
+    );
     this.todoService.getToDoStatus();
-    this.todoSubscription = this.todoService.todosChanged.subscribe(todo => this.todos = todo);
+    this.todoSubscription = this.todoService.todosChanged.subscribe(todo => (this.todos = todo));
     this.showToDo();
   }
 
@@ -37,9 +37,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
-    if (this.todoSubscription)
-      this.todoSubscription.unsubscribe();
-    if (this.todoStatusSubscription)
-      this.todoStatusSubscription.unsubscribe();
+    if (this.todoSubscription) this.todoSubscription.unsubscribe();
+    if (this.todoStatusSubscription) this.todoStatusSubscription.unsubscribe();
   }
 }

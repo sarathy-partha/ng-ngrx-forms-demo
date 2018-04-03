@@ -20,7 +20,7 @@ import {
   MatProgressBarModule,
   MatSortModule,
   MatSelectModule,
-  MatSnackBarModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 const materialModules = [
@@ -44,12 +44,12 @@ const materialModules = [
   MatProgressBarModule,
   MatSortModule,
   MatSelectModule,
-  MatSnackBarModule,
-]
+  MatSnackBarModule
+];
 
 @NgModule({
   imports: [materialModules],
   exports: [materialModules],
   declarations: []
 })
-export class MaterialModule { }
+export class MaterialModule {}

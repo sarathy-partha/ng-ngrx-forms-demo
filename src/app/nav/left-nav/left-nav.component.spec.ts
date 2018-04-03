@@ -6,12 +6,13 @@ describe('LeftNavComponent', () => {
   let component: LeftNavComponent;
   let fixture: ComponentFixture<LeftNavComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LeftNavComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [LeftNavComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LeftNavComponent);

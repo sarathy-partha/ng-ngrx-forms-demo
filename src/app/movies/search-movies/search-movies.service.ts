@@ -11,10 +11,9 @@ const API_KEY = config.movies.API_KEY;
 @Injectable()
 export class SearchMoviesService {
   movies;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getMovies(page): Observable<Movie[]> {
-    return this.http
-      .get<Movie[]>(`${MOVIES_URL}${API_KEY}&language=en-IN&region=IN&page=${page + 1}`)
+    return this.http.get<Movie[]>(`${MOVIES_URL}${API_KEY}&language=en-IN&region=IN&page=${page + 1}`);
   }
 }

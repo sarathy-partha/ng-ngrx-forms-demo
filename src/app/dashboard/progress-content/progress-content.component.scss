@@ -1,48 +1,47 @@
+canvas {
+  background: transparent;
+}
 
-  canvas {
-    background: transparent;
-  }
+title {
+  font-size: 12px;
+}
 
-  title {
-      font-size: 12px;
-  }
-  
-  .progressContent {
-    position: absolute;
-    left: 53%;
-    top: 40%;
-    font-size: 10px;
-    transform: translate(-60%, -40%);
-    height: 100px;
-    text-align: center;
-  }
+.progressContent {
+  position: absolute;
+  left: 53%;
+  top: 40%;
+  font-size: 10px;
+  transform: translate(-60%, -40%);
+  height: 100px;
+  text-align: center;
+}
 
-  .progressContent .percent {
-    margin-top: -10px;
-    font-size: 40px;
-  }
+.progressContent .percent {
+  margin-top: -10px;
+  font-size: 40px;
+}
 
-  .progressContent .footer {
-      margin-top: 5px;
-    font-size: 14px;
-  }
-  
-  .canvas-wrap {
-    position: relative;
-  }
+.progressContent .footer {
+  margin-top: 5px;
+  font-size: 14px;
+}
 
-  .red {
-    color: red;
-  }
+.canvas-wrap {
+  position: relative;
+}
 
-  .green {
-    color: #00bb11;
-  }
+.red {
+  color: red;
+}
 
-  .outlineText {
-    position: absolute;
-    text-align: right;
-    margin-left: 170px;
-    margin-top: 130px;
-    color: gray;
-  }
+.green {
+  color: #00bb11;
+}
+
+.outlineText {
+  position: absolute;
+  text-align: right;
+  margin-left: 170px;
+  margin-top: 130px;
+  color: gray;
+}

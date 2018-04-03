@@ -12,7 +12,7 @@ import { of as observableOf } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
 import * as UI from '../../common/reducers/ui.actions';
 import * as appReducer from '../../app.reducer';
-import { Store } from "@ngrx/store";
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
 import { UIControlService } from '../../common/uicontrol.service';
 
@@ -22,7 +22,7 @@ import { UIControlService } from '../../common/uicontrol.service';
   styleUrls: ['./search-movies.component.scss']
 })
 export class SearchMoviesComponent implements OnInit, AfterViewInit {
-  MOVIE_URL = "http://image.tmdb.org/t/p/w185/";
+  MOVIE_URL = 'http://image.tmdb.org/t/p/w185/';
   movie: Movie[];
   movieDatabase: SearchMoviesService | null;
   displayedColumns = ['title', 'popularity', 'id', 'release_date'];
@@ -38,7 +38,7 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
     private http: HttpClient,
     private uiControlService: UIControlService,
     private store: Store<{ ui: appReducer.State }>
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.isLoadingResults$ = this.store.select(appReducer.getIsLoading);
@@ -62,20 +62,21 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
       .pipe(
         startWith({}),
         switchMap(() => {
-          this.store.dispatch(new UI.StartLoading);
+          this.store.dispatch(new UI.StartLoading());
           return this.movieDatabase!.getMovies(this.paginator.pageIndex);
         }),
         map(data => {
           // Flip flag to show that loading has finished.
-          this.store.dispatch(new UI.StopLoading);
+          this.store.dispatch(new UI.StopLoading());
           this.resultsLength = data['total_results'];
           return data['results'];
         }),
         catchError(() => {
-          this.store.dispatch(new UI.StopLoading);
-          this.uiControlService.showMessage("Error fetching movies, please try again", null, 3000);
+          this.store.dispatch(new UI.StopLoading());
+          this.uiControlService.showMessage('Error fetching movies, please try again', null, 3000);
           return observableOf([]);
         })
-      ).subscribe(data => this.dataSource.data = data);
+      )
+      .subscribe(data => (this.dataSource.data = data));
   }
 }
