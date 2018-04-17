@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@import 'app//nav/left-nav/left-nav.component.scss';
+@import 'app/core/nav/left-nav/left-nav.component.scss';
 @import 'app/movies/search-movies/search-movies.component.scss';
 @import 'app/app.component.scss';
 
@@ -15,10 +15,10 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://www.google.com/design/spec/style/color.html
 $ng-app-primary: mat-palette($mat-teal);
-$ng-app-accent:  mat-palette($mat-lime);
+$ng-app-accent: mat-palette($mat-lime);
 
 // The warn palette is optional (defaults to red).
-$ng-app-warn:    mat-palette($mat-red);
+$ng-app-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $ng-app-theme: mat-light-theme($ng-app-primary, $ng-app-accent, $ng-app-warn);
@@ -35,24 +35,24 @@ $ng-app-theme: mat-light-theme($ng-app-primary, $ng-app-accent, $ng-app-warn);
 
 // Define an alternate dark theme.
 $dark-primary: mat-palette($mat-blue-grey);
-$dark-accent:  mat-palette($mat-green);
-$dark-warn:    mat-palette($mat-deep-orange);
-$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+$dark-accent: mat-palette($mat-green);
+$dark-warn: mat-palette($mat-deep-orange);
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
 $indigo-primary: mat-palette($mat-indigo);
-$indigo-accent:  mat-palette($mat-gray);
-$indigo-warn:    mat-palette($mat-deep-orange);
-$indigo-theme:   mat-light-theme($indigo-primary, $indigo-accent, $indigo-warn);
+$indigo-accent: mat-palette($mat-gray);
+$indigo-warn: mat-palette($mat-deep-orange);
+$indigo-theme: mat-light-theme($indigo-primary, $indigo-accent, $indigo-warn);
 
 $deeppurple-primary: mat-palette($mat-deep-purple);
-$deeppurple-accent:  mat-palette($mat-orange);
-$deeppurple-warn:    mat-palette($mat-deep-orange);
-$deeppurple-theme:   mat-light-theme($deeppurple-primary, $deeppurple-accent, $deeppurple-warn);
+$deeppurple-accent: mat-palette($mat-orange);
+$deeppurple-warn: mat-palette($mat-deep-orange);
+$deeppurple-theme: mat-light-theme($deeppurple-primary, $deeppurple-accent, $deeppurple-warn);
 
 $amber-primary: mat-palette($mat-amber);
-$amber-accent:  mat-palette($mat-blue-gray);
-$amber-warn:    mat-palette($mat-deep-orange);
-$amber-theme:   mat-dark-theme($amber-primary, $amber-accent, $amber-warn);
+$amber-accent: mat-palette($mat-blue-gray);
+$amber-warn: mat-palette($mat-deep-orange);
+$amber-theme: mat-dark-theme($amber-primary, $amber-accent, $amber-warn);
 
 .bluegray {
   @include angular-material-theme($dark-theme);
@@ -62,22 +62,22 @@ $amber-theme:   mat-dark-theme($amber-primary, $amber-accent, $amber-warn);
 }
 
 .indigo {
-    @include angular-material-theme($indigo-theme);
-    @include left-nav-theme($indigo-theme);
-    @include left-nav-main-theme($indigo-theme);
-    @include search-movies-theme($indigo-theme);
-  }
+  @include angular-material-theme($indigo-theme);
+  @include left-nav-theme($indigo-theme);
+  @include left-nav-main-theme($indigo-theme);
+  @include search-movies-theme($indigo-theme);
+}
 
-  .deeppurple {
-    @include angular-material-theme($deeppurple-theme);
-    @include left-nav-theme($deeppurple-theme);
-    @include left-nav-main-theme($deeppurple-theme);
-    @include search-movies-theme($deeppurple-theme);
-  }
+.deeppurple {
+  @include angular-material-theme($deeppurple-theme);
+  @include left-nav-theme($deeppurple-theme);
+  @include left-nav-main-theme($deeppurple-theme);
+  @include search-movies-theme($deeppurple-theme);
+}
 
-  .amber {
-    @include angular-material-theme($amber-theme);
-    @include left-nav-theme($amber-theme);
-    @include left-nav-main-theme($amber-theme);
-    @include search-movies-theme($amber-theme);
-  }
+.amber {
+  @include angular-material-theme($amber-theme);
+  @include left-nav-theme($amber-theme);
+  @include left-nav-main-theme($amber-theme);
+  @include search-movies-theme($amber-theme);
+}

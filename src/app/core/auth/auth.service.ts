@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { ToDoService } from '../todo/todo.service';
-import { UIControlService } from '../common/uicontrol.service';
+import { ToDoService } from '../../todo/todo.service';
+import { UIControlService } from '../../shared/uicontrol.service';
 import { Store } from '@ngrx/store';
-import * as appReducer from '../app.reducer';
-import * as UI from '../common/reducers/ui.actions';
+import * as appReducer from '../../app.reducer';
+import * as UI from '../../shared/reducers/ui.actions';
 import * as AUTH from './actions/auth.actions';
 
 import { Observable } from 'rxjs/Observable';

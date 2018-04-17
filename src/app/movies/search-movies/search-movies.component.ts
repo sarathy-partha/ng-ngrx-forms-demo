@@ -10,11 +10,11 @@ import { startWith } from 'rxjs/operators/startWith';
 import { switchMap } from 'rxjs/operators/switchMap';
 import { of as observableOf } from 'rxjs/observable/of';
 import { HttpClient } from '@angular/common/http';
-import * as UI from '../../common/reducers/ui.actions';
+import * as UI from '../../shared/reducers/ui.actions';
 import * as appReducer from '../../app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
-import { UIControlService } from '../../common/uicontrol.service';
+import { UIControlService } from '../../shared/uicontrol.service';
 
 @Component({
   selector: 'app-search-movies',

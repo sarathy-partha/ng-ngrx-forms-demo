@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from './movies.model';
 import { Observable } from 'rxjs/Observable';
-import { config } from '../common/config';
+import { config } from '../shared/config';
 import { Store } from '@ngrx/store';
 
 import * as moviesReducer from './reducers/movies.reducer';
 import * as Movies from './actions/movies.actions';
-import { UIControlService } from '../common/uicontrol.service';
+import { UIControlService } from '../shared/uicontrol.service';
 
 const MOVIES_URL = config.movies.MOVIES_URL;
 const CASTCREW_URL = config.movies.CASTCREW_URL;

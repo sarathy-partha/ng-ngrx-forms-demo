@@ -1,11 +1,9 @@
-import { Subscription } from 'rxjs/Subscription';
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { AuthService } from '@app/auth/auth.service';
 import { MediaMatcher } from '@angular/cdk/layout';
-
-import * as appReducer from './app.reducer';
-import { Observable } from 'rxjs/observable';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AuthService } from '@app/core/auth/auth.service';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/observable';
+import * as appReducer from './app.reducer';
 
 @Component({
   selector: 'app-root',

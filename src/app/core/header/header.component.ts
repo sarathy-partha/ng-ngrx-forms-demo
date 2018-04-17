@@ -6,7 +6,7 @@ import { AuthService } from '../auth/auth.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
 
-import * as appReducer from '../app.reducer';
+import * as appReducer from '../../app.reducer';
 
 @Component({
   selector: 'app-header',

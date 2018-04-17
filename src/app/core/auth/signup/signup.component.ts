@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs/Subscription';
-import * as appReducer from '../../app.reducer';
+import * as appReducer from '../../../app.reducer';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/observable';
 

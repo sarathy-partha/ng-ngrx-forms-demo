@@ -5,7 +5,7 @@ import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { MatButton } from '@angular/material';
-import * as appReducer from '../../app.reducer';
+import * as appReducer from '../../../app.reducer';
 import { Store } from '@ngrx/store';
 
 @Component({

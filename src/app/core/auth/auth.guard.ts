@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { Route } from '@angular/compiler/src/core';
 
-import * as appReducer from '../app.reducer';
+import * as appReducer from '../../app.reducer';
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
