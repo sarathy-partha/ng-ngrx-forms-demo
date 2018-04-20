@@ -1,4 +1,4 @@
-import * as uiReducer from './shared/reducers/ui.reducer';
+import * as uiReducer from './shared/store/ui.reducer';
 import * as authReducer from './core/auth/reducers/auth.reducer';
 
 import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';

@@ -9,7 +9,7 @@ import { ToDoService } from '../../todo/todo.service';
 import { UIControlService } from '../../shared/uicontrol.service';
 import { Store } from '@ngrx/store';
 import * as appReducer from '../../app.reducer';
-import * as UI from '../../shared/reducers/ui.actions';
+import * as UI from '../../shared/store/ui.actions';
 import * as AUTH from './actions/auth.actions';
 
 import { Observable } from 'rxjs/Observable';

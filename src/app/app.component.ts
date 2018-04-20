@@ -2,7 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/core/auth/auth.service';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import * as appReducer from './app.reducer';
 
 @Component({

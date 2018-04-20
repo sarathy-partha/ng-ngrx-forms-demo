@@ -4,7 +4,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 import { UIControlService } from '../shared/uicontrol.service';
-import * as UI from '../shared/reducers/ui.actions';
+import * as UI from '../shared/store/ui.actions';
 import * as appReducer from '../app.reducer';
 import { Store } from '@ngrx/store';
 

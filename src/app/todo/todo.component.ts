@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { Status, ToDo } from './todo.model';
 import { Subscription } from 'rxjs/Subscription';
 import { ToDoService } from './todo.service';

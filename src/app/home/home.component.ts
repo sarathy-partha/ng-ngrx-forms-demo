@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../core/auth/auth.service';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 
 import * as appReducer from '../app.reducer';
 

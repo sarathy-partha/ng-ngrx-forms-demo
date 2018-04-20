@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from './movies.service';
 import { Movie } from './movies.model';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { trigger, group, state, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
