@@ -6,11 +6,64 @@ import { AuthService } from '@app/core/auth/auth.service';
 import { Store } from '@ngrx/store';
 import { AppComponent } from './app.component';
 
+export class FakeMediaQueryList implements MediaQueryList {
+  /** The callback for change events. */
+  addListenerCallback?: (mql: MediaQueryList) => void;
+
+  constructor(public matches, public media) {}
+
+  /** Toggles the matches state and "emits" a change event. */
+  setMatches(matches: boolean) {
+    this.matches = matches;
+    // tslint:disable-next-line:no-non-null-assertion
+    this.addListenerCallback!(this);
+  }
+
+  /** Registers the callback method for change events. */
+  addListener(callback: (mql: MediaQueryList) => void) {
+    this.addListenerCallback = callback;
+  }
+
+  /** Noop, but required for implementing MediaQueryList. */
+  removeListener() {}
+}
+
+@Injectable()
+export class FakeMediaMatcher {
+  /** A map of match media queries. */
+  private queries: Map<string, FakeMediaQueryList> = new Map();
+
+  /** The number of distinct queries created in the media matcher during a test. */
+  get queryCount(): number {
+    return this.queries.size;
+  }
+
+  /** Fakes the match media response to be controlled in tests. */
+  matchMedia(query: string): FakeMediaQueryList {
+    const mql = new FakeMediaQueryList(true, query);
+    this.queries.set(query, mql);
+    return mql;
+  }
+
+  /** Clears all queries from the map of queries. */
+  clear() {
+    this.queries.clear();
+  }
+
+  /** Toggles the matching state of the provided query. */
+  setMatchesQuery(query: string, matches: boolean) {
+    if (this.queries.has(query)) {
+      // tslint:disable-next-line:no-non-null-assertion
+      this.queries.get(query)!.setMatches(matches);
+    }
+  }
+}
+
 describe('AppComponent', () => {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
-  let mediaMatcher: FakeMediaMatcher;
+  const mediaMatcher: FakeMediaMatcher = new FakeMediaMatcher();
 
   beforeEach(() => {
     const mediaMatcherStub = {
@@ -68,54 +121,3 @@ describe('AppComponent', () => {
     });
   });
 });
-
-export class FakeMediaQueryList implements MediaQueryList {
-  /** The callback for change events. */
-  addListenerCallback?: (mql: MediaQueryList) => void;
-
-  constructor(public matches, public media) {}
-
-  /** Toggles the matches state and "emits" a change event. */
-  setMatches(matches: boolean) {
-    this.matches = matches;
-    this.addListenerCallback!(this);
-  }
-
-  /** Registers the callback method for change events. */
-  addListener(callback: (mql: MediaQueryList) => void) {
-    this.addListenerCallback = callback;
-  }
-
-  /** Noop, but required for implementing MediaQueryList. */
-  removeListener() {}
-}
-
-@Injectable()
-export class FakeMediaMatcher {
-  /** A map of match media queries. */
-  private queries: Map<string, FakeMediaQueryList> = new Map();
-
-  /** The number of distinct queries created in the media matcher during a test. */
-  get queryCount(): number {
-    return this.queries.size;
-  }
-
-  /** Fakes the match media response to be controlled in tests. */
-  matchMedia(query: string): FakeMediaQueryList {
-    let mql = new FakeMediaQueryList(true, query);
-    this.queries.set(query, mql);
-    return mql;
-  }
-
-  /** Clears all queries from the map of queries. */
-  clear() {
-    this.queries.clear();
-  }
-
-  /** Toggles the matching state of the provided query. */
-  setMatchesQuery(query: string, matches: boolean) {
-    if (this.queries.has(query)) {
-      this.queries.get(query)!.setMatches(matches);
-    }
-  }
-}

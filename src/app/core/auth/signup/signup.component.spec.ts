@@ -9,10 +9,9 @@ describe('SignupComponent', () => {
   let comp: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
   const ngFormStub = {
-    value: {
-      email: {},
-      password: {}
-    }
+    email: {},
+    password: {},
+    submitted: false
   };
   beforeEach(() => {
     const authServiceStub = {
