@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/local/Cellar/node/9.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js format:all
+  /usr/local/Cellar/node/9.8.0/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js upgrade --latest
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet
 
 Yarn version: 
   1.5.1
@@ -73,13 +73,13 @@ npm manifest:
       "karma-coverage-istanbul-reporter": "^1.2.1",
       "karma-jasmine": "~1.1.0",
       "karma-jasmine-html-reporter": "^0.2.2",
-      "prettier": "1.11.1",
+      "prettier": "^1.12.1",
       "pretty-quick": "^1.4.1",
       "protractor": "~5.1.2",
       "semantic-release": "^15.1.2",
       "standard-version": "^4.3.0",
       "ts-node": "~4.1.0",
-      "tslint": "~5.9.1",
+      "tslint": "^5.9.1",
       "typescript": "~2.5.3",
       "yarn-run-all": "^3.1.1"
     },
@@ -7999,7 +7999,7 @@ Lockfile:
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.0.tgz#e37a86fda8cbbaf23a057f473c9f4dc64e5fc2e8"
   
-  tslint@~5.9.1:
+  tslint@^5.9.1:
     version "5.9.1"
     resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.9.1.tgz#1255f87a3ff57eb0b0e1f0e610a8b4748046c9ae"
     dependencies:
@@ -8786,16 +8786,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.20.tgz#a218c48db09464b19ff6fc8f0d4bb5b1046e185d"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 2
-  Command: sh
-  Arguments: -c prettier --config .prettierrc --write "src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}"
-  Directory: /Users/partha/Work/ng-rx-forms-dashboard-demo
-  Output:
-  
-      at ProcessTermError.MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
-      at new ProcessTermError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:226:113)
-      at ChildProcess.<anonymous> (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:30281:17)
-      at ChildProcess.emit (events.js:180:13)
-      at maybeClose (internal/child_process.js:936:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
+  Error: Outdated lockfile. Please run `yarn install` and try again.
+      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:36620:19
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:98:30)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:116:14
+      at new Promise (<anonymous>)
+      at new F (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:23451:28)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:95:12
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:36660:25
+      at Array.map (<anonymous>)

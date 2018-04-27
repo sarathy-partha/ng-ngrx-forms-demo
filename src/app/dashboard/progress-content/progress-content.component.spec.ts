@@ -1,26 +1,29 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ProgressContentComponent } from './progress-content.component';
 
 describe('ProgressContentComponent', () => {
-  let component: ProgressContentComponent;
+  let comp: ProgressContentComponent;
   let fixture: ComponentFixture<ProgressContentComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [ProgressContentComponent]
-      }).compileComponents();
-    })
-  );
-
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [ProgressContentComponent],
+      schemas: [NO_ERRORS_SCHEMA]
+    });
     fixture = TestBed.createComponent(ProgressContentComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    comp = fixture.componentInstance;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('can load instance', () => {
+    expect(comp).toBeTruthy();
+  });
+
+  describe('ngOnInit', () => {
+    it('makes expected calls', () => {
+      spyOn(comp, 'showProgressContent');
+      comp.ngOnInit();
+      expect(comp.showProgressContent).toHaveBeenCalled();
+    });
   });
 });

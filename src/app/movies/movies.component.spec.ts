@@ -1,26 +1,54 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MoviesService } from './movies.service';
+import { Store } from '@ngrx/store';
 import { MoviesComponent } from './movies.component';
 
 describe('MoviesComponent', () => {
-  let component: MoviesComponent;
+  let comp: MoviesComponent;
   let fixture: ComponentFixture<MoviesComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [MoviesComponent]
-      }).compileComponents();
-    })
-  );
-
   beforeEach(() => {
+    const moviesServiceStub = {
+      getMovies: () => ({})
+    };
+    const storeStub = {
+      select: () => ({})
+    };
+    TestBed.configureTestingModule({
+      declarations: [MoviesComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [{ provide: MoviesService, useValue: moviesServiceStub }, { provide: Store, useValue: storeStub }]
+    });
     fixture = TestBed.createComponent(MoviesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    comp = fixture.componentInstance;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('can load instance', () => {
+    expect(comp).toBeTruthy();
+  });
+
+  it('MOVIE_URL defaults to: http://image.tmdb.org/t/p/w185/', () => {
+    expect(comp.MOVIE_URL).toEqual('http://image.tmdb.org/t/p/w185/');
+  });
+
+  describe('ngOnInit', () => {
+    it('makes expected calls', () => {
+      const storeStub: Store<any> = fixture.debugElement.injector.get(Store);
+      spyOn(comp, 'showMovies');
+      spyOn(storeStub, 'select');
+      comp.ngOnInit();
+      expect(comp.showMovies).toHaveBeenCalled();
+      expect(storeStub.select).toHaveBeenCalled();
+    });
+  });
+
+  describe('showMovies', () => {
+    it('makes expected calls', () => {
+      const moviesServiceStub: MoviesService = fixture.debugElement.injector.get(MoviesService);
+      spyOn(moviesServiceStub, 'getMovies');
+      comp.showMovies();
+      expect(moviesServiceStub.getMovies).toHaveBeenCalled();
+    });
   });
 });

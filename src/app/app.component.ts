@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   mobileQuery: MediaQueryList;
   theme$: Observable<string>;
 
-  private _mobileQueryListener: () => void;
+  private readonly _mobileQueryListener: () => void;
 
   constructor(
     private authservice: AuthService,
