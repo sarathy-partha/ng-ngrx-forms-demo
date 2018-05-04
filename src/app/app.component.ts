@@ -2,7 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/core/auth/auth.service';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as appReducer from './app.reducer';
 
 @Component({
@@ -13,7 +13,7 @@ import * as appReducer from './app.reducer';
 export class AppComponent implements OnInit {
   title = 'app';
   mobileQuery: MediaQueryList;
-  theme$: Observable<string>;
+  theme$: Store<string>;
 
   private readonly _mobileQueryListener: () => void;
 
