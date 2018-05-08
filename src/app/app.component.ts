@@ -13,7 +13,7 @@ import * as appReducer from './app.reducer';
 export class AppComponent implements OnInit {
   title = 'app';
   mobileQuery: MediaQueryList;
-  theme$: Store<string>;
+  theme$: Observable<string>;
 
   private readonly _mobileQueryListener: () => void;
 

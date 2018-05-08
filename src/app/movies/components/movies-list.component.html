@@ -1,0 +1,12 @@
+<mat-card class="movie-card">
+  <mat-card-header>
+    <mat-card-title class="mat-headline">{{ detail.title }}</mat-card-title>
+    <mat-card-subtitle>Released Date: {{detail.release_date | date}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{MOVIE_IMAGE_URL}}{{detail.poster_path}}" alt="{{detail.title}}" />
+  <mat-card-content fxLayout>
+    <p>
+      {{detail.overview}}
+    </p>
+  </mat-card-content>
+</mat-card>

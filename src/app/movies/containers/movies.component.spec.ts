@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { MoviesService } from './movies.service';
+import { MoviesService } from '../movies.service';
 import { Store } from '@ngrx/store';
 import { MoviesComponent } from './movies.component';
 
@@ -18,7 +18,10 @@ describe('MoviesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [MoviesComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: MoviesService, useValue: moviesServiceStub }, { provide: Store, useValue: storeStub }]
+      providers: [
+        { provide: MoviesService, useValue: moviesServiceStub },
+        { provide: Store, useValue: storeStub }
+      ]
     });
     fixture = TestBed.createComponent(MoviesComponent);
     comp = fixture.componentInstance;
@@ -35,19 +38,21 @@ describe('MoviesComponent', () => {
   describe('ngOnInit', () => {
     it('makes expected calls', () => {
       const storeStub: Store<any> = fixture.debugElement.injector.get(Store);
-      spyOn(comp, 'showMovies');
+      spyOn(comp, 'getMovies');
       spyOn(storeStub, 'select');
       comp.ngOnInit();
-      expect(comp.showMovies).toHaveBeenCalled();
+      expect(comp.getMovies).toHaveBeenCalled();
       expect(storeStub.select).toHaveBeenCalled();
     });
   });
 
   describe('showMovies', () => {
     it('makes expected calls', () => {
-      const moviesServiceStub: MoviesService = fixture.debugElement.injector.get(MoviesService);
+      const moviesServiceStub: MoviesService = fixture.debugElement.injector.get(
+        MoviesService
+      );
       spyOn(moviesServiceStub, 'getMovies');
-      comp.showMovies();
+      comp.getMovies();
       expect(moviesServiceStub.getMovies).toHaveBeenCalled();
     });
   });

@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Movie } from '../movies.model';
+import { Movie } from '../models/movies.model';
 
 export const SET_UPCOMING_MOVIES = '[Movies] Set Upcoming Movies';
 

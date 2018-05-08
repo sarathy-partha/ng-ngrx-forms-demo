@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from './movies.model';
+import { Movie } from './models/movies.model';
 import { Observable } from 'rxjs/Observable';
 import { config } from '../shared/config';
 import { Store } from '@ngrx/store';
@@ -26,10 +26,16 @@ export class MoviesService {
   getMovies() {
     this.http.get<Movie[]>(MOVIES_URL + API_KEY).subscribe(
       (movies: Movie[]) => {
-        this.moviesStore.dispatch(new Movies.SetUpcomingMovies(movies['results']));
+        this.moviesStore.dispatch(
+          new Movies.SetUpcomingMovies(movies['results'])
+        );
       },
       error => {
-        this.uiControlService.showMessage('Error fetching movies, please try again', null, 3000);
+        this.uiControlService.showMessage(
+          'Error fetching movies, please try again',
+          null,
+          3000
+        );
       }
     );
   }

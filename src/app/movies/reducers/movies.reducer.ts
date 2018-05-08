@@ -1,6 +1,6 @@
 import { Action, createFeatureSelector, createSelector } from '@ngrx/store';
 import { MoviesActions, SET_UPCOMING_MOVIES } from '../actions/movies.actions';
-import { Movie } from '../movies.model';
+import { Movie } from '../models/movies.model';
 import * as appReducer from '../../app.reducer';
 
 export interface UpcomingMoviesState {
@@ -28,7 +28,9 @@ export function moviesReducer(state = initialState, action: MoviesActions) {
   }
 }
 
-export const getUpComingMoviesState = createFeatureSelector<UpcomingMoviesState>('Movies');
+export const getUpComingMoviesState = createFeatureSelector<
+  UpcomingMoviesState
+>('Movies');
 
 export const getUpComingMovies = createSelector(
   getUpComingMoviesState,

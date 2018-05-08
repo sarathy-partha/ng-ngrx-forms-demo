@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { Movie } from '../movies.model';
+import { Movie } from '../models/movies.model';
 import { MoviesService } from '../movies.service';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { SearchMoviesService } from './search-movies.service';
@@ -72,7 +72,11 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
         }),
         catchError(() => {
           this.store.dispatch(new UI.StopLoading());
-          this.uiControlService.showMessage('Error fetching movies, please try again', null, 3000);
+          this.uiControlService.showMessage(
+            'Error fetching movies, please try again',
+            null,
+            3000
+          );
           return observableOf([]);
         })
       )

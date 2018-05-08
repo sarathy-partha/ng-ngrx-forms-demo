@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Movie } from '../movies.model';
+import { Movie } from '../models/movies.model';
 import { Observable } from 'rxjs/Observable';
 import { config } from '../../shared/config';
 
@@ -14,6 +14,8 @@ export class SearchMoviesService {
   constructor(private http: HttpClient) {}
 
   getMovies(page): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${MOVIES_URL}${API_KEY}&language=en-IN&region=IN&page=${page + 1}`);
+    return this.http.get<Movie[]>(
+      `${MOVIES_URL}${API_KEY}&language=en-IN&region=IN&page=${page + 1}`
+    );
   }
 }
