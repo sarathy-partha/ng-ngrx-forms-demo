@@ -31,9 +31,9 @@ describe('MoviesComponent', () => {
     expect(comp).toBeTruthy();
   });
 
-  it('MOVIE_URL defaults to: http://image.tmdb.org/t/p/w185/', () => {
-    expect(comp.MOVIE_URL).toEqual('http://image.tmdb.org/t/p/w185/');
-  });
+  // it('MOVIE_URL defaults to: http://image.tmdb.org/t/p/w185/', () => {
+  //   expect(comp.MOVIE_IMAGE_URL).toEqual('http://image.tmdb.org/t/p/w185/');
+  // });
 
   describe('ngOnInit', () => {
     it('makes expected calls', () => {
