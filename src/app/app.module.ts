@@ -11,20 +11,21 @@ import { StoreModule } from '@ngrx/store';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppRoutingModule } from './app-routing.module';
-
+import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CoreModule,
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
     StoreModule.forRoot(reducers)
   ],
+  providers: [AdalService, AdalGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

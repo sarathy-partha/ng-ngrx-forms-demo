@@ -10,11 +10,21 @@ import { LeftNavComponent } from '@app/core/nav/left-nav/left-nav.component';
 
 import { AuthModule } from '@app/core/auth/auth.module';
 import { AuthService } from '@app/core/auth/auth.service';
-
 @NgModule({
   declarations: [HeaderComponent, LeftNavComponent],
-  imports: [CommonModule, AuthModule, MaterialModule, AppRoutingModule, FlexLayoutModule],
-  exports: [MaterialModule, FlexLayoutModule, HeaderComponent, LeftNavComponent],
+  imports: [
+    CommonModule,
+    AuthModule,
+    MaterialModule,
+    AppRoutingModule,
+    FlexLayoutModule
+  ],
+  exports: [
+    MaterialModule,
+    FlexLayoutModule,
+    HeaderComponent,
+    LeftNavComponent
+  ],
   providers: [AuthService, ToDoService]
 })
 export class CoreModule {
@@ -25,7 +35,9 @@ export class CoreModule {
   ) {
     // Import guard
     if (parentModule) {
-      throw new Error(`${parentModule} has already been loaded. Import Core module in the AppModule only.`);
+      throw new Error(
+        `${parentModule} has already been loaded. Import Core module in the AppModule only.`
+      );
     }
   }
 }

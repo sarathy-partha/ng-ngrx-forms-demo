@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Status, ToDo } from './todo.model';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { UIControlService } from '../shared/uicontrol.service';
 import * as UI from '../shared/store/ui.actions';
 import * as appReducer from '../app.reducer';
 import { Store } from '@ngrx/store';
+import { UIControlService } from '../shared/uicontrol.service';
 
 @Injectable()
 export class ToDoService {
@@ -32,8 +32,8 @@ export class ToDoService {
         .map(resData => {
           return resData.map(data => {
             return {
-              id: data.payload.doc.data().id,
-              status: data.payload.doc.data().status
+              id: data.payload.doc.id,
+              status: data.payload.doc.get('status')
             };
           });
         })
@@ -46,7 +46,11 @@ export class ToDoService {
           error => {
             this.todoStatusChanged.next(null);
             this.store.dispatch(new UI.StopLoading());
-            this.uiControlService.showMessage('Error fetching ToDo Status, please try again', null, 3000);
+            this.uiControlService.showMessage(
+              'Error fetching ToDo Status, please try again',
+              null,
+              3000
+            );
           }
         )
     );
@@ -74,7 +78,11 @@ export class ToDoService {
           error => {
             this.todosChanged.next(null);
             this.store.dispatch(new UI.StopLoading());
-            this.uiControlService.showMessage('Error fetching ToDos, please try again', null, 3000);
+            this.uiControlService.showMessage(
+              'Error fetching ToDos, please try again',
+              null,
+              3000
+            );
           }
         )
     );

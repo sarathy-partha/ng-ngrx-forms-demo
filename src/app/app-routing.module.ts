@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, LoadChildren } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './core/auth/auth.guard';
+import { AdalGuard } from 'adal-angular4';
 
 const routes: Routes = [
   {

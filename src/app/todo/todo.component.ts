@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Status, ToDo } from './todo.model';
 import { Subscription } from 'rxjs/Subscription';
-import { ToDoService } from './todo.service';
 import * as appReducer from '../app.reducer';
 import { Store } from '@ngrx/store';
+import { ToDoService } from './todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -18,7 +18,10 @@ export class TodoComponent implements OnInit, OnDestroy {
   todos: ToDo[];
   isLoading$: Observable<boolean>;
 
-  constructor(private todoService: ToDoService, private store: Store<appReducer.State>) {}
+  constructor(
+    private todoService: ToDoService,
+    private store: Store<appReducer.State>
+  ) {}
 
   ngOnInit() {
     this.isLoading$ = this.store.select(appReducer.getIsLoading);
@@ -26,7 +29,9 @@ export class TodoComponent implements OnInit, OnDestroy {
       todoStatus => (this.todoStatus = todoStatus)
     );
     this.todoService.getToDoStatus();
-    this.todoSubscription = this.todoService.todosChanged.subscribe(todo => (this.todos = todo));
+    this.todoSubscription = this.todoService.todosChanged.subscribe(
+      todo => (this.todos = todo)
+    );
     this.showToDo();
   }
 

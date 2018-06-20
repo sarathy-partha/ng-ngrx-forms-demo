@@ -1,6 +1,6 @@
 import { User } from './user.model';
 import { AuthData } from './auth-data.model';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -11,11 +11,11 @@ import { Store } from '@ngrx/store';
 import * as appReducer from '../../app.reducer';
 import * as UI from '../../shared/store/ui.actions';
 import * as AUTH from './actions/auth.actions';
-
+import { AdalService } from 'adal-angular4';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements OnInit {
   user: Observable<User>;
 
   constructor(
@@ -23,12 +23,17 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private todoservice: ToDoService,
     private uiControlService: UIControlService,
+    private adalService: AdalService,
     private store: Store<{ ui: appReducer.State }>
   ) {}
 
+  ngOnInit() {
+    this.adalService.handleWindowCallback();
+  }
+
   initiAuthListerner() {
     this.afAuth.authState.subscribe(user => {
-      if (user) {
+      if (user || this.adalService.userInfo.authenticated) {
         this.store.dispatch(new AUTH.SetAuthenticated());
         // this.router.navigate(['/home']);
       } else {
@@ -41,7 +46,7 @@ export class AuthService {
 
   checkAuthStatus() {
     this.afAuth.authState.subscribe(user => {
-      if (user) {
+      if (user || this.adalService.userInfo.authenticated) {
         this.store.dispatch(new AUTH.SetAuthenticated());
       } else {
         this.todoservice.cancelFBSubscriptions();

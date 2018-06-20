@@ -19,8 +19,11 @@
       <button *ngIf="!(isAuth$ | async)" routerLink="/signin" mat-icon-button color="inherit">
         <mat-icon class="header-icon">person</mat-icon>
       </button>
+      <button *ngIf="!(isAuth$ | async)" (click)="azureADSignIn()" mat-mini-fab color="inherit">
+        AD
+      </button>
       <a mat-icon-button href="https://github.com/partha360/ng-ngrx-forms-demo" target="_new">
-        <mat-icon svgIcon="github" class="header-icon" >
+        <mat-icon svgIcon="github" class="header-icon">
         </mat-icon>
       </a>
     </div>

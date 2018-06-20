@@ -1,4 +1,3 @@
-import { ToDoService } from './todo.service';
 import { NgModule } from '@angular/core';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { TodoComponent } from './todo.component';
@@ -7,6 +6,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../../environments/environment';
 import { SharedModule } from '../shared/shared.module';
 import { ToDoRoutingModule } from './todo-routing.module';
+import { ToDoService } from './todo.service';
 
 @NgModule({
   declarations: [TodoComponent],

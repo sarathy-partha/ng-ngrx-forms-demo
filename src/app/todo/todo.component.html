@@ -10,7 +10,7 @@
   <mat-list-item *ngFor="let todo of todos">
     <h1 matLine>{{todo.title}}</h1>
     <p matLine>{{todo.description}}</p>
-    <span matLine>Due Date: {{todo.date | date}}</span>
+    <span matLine>Due Date: {{todo.date}}</span>
     <span matLine>{{todo.status.status}}</span>
     <mat-divider></mat-divider>
   </mat-list-item>
