@@ -55,15 +55,15 @@ jobs:
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
-          at: ~/ng-ngrx-forms-demo
+          at: ~/ng-ngrx-forms-demo/dist
 
       - run:
           name: Deploy App to Firebase
-          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+          command: ~/ng-ngrx-forms-demo/node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
 workflows:
   version: 2
-  deploy-app:
+  build-deploy-app:
     jobs:
       - build
       - deploy:
