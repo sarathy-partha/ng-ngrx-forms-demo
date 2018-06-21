@@ -26,20 +26,20 @@ jobs:
           command: yarn install
 
       - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
             - ./node_modules
 
       - run:
-          name: build
+          name: Build
           command: yarn ng -- build --prod --aot --no-progress
 
       - run:
-          name: lint
-          command: yarn lint -- --formatters-dir ./tslint-formatters --format junit -o tslint.xml
+          name: Code-Quality
+          command: yarn lint
 
       - run:
-          name: test
+          name: Test
           command: yarn test --single-run --no-progress
 
