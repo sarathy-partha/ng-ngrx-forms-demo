@@ -7,5 +7,9 @@ export const environment = {
     projectId: 'ng-ngrx-demo',
     storageBucket: 'ng-ngrx-demo.appspot.com',
     messagingSenderId: '810503052775'
+  },
+  config: {
+    tenant: 'finiteloop.io',
+    clientId: '0790be0b-0fd9-461b-b6d3-923ed667a603'
   }
 };
