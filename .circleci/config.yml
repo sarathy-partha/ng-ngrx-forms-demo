@@ -1,7 +1,8 @@
 defaults: &defaults
-  working_directory: ~/ng-ngrx-forms-demo
   docker:
     - image: circleci/node:8.11-browsers
+
+  working_directory: ~/ng-ngrx-forms-demo
 
 version: 2
 jobs:
@@ -56,7 +57,11 @@ jobs:
           command: ~/ng-ngrx-forms-demo/node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
   deploy-AWS:
-    <<: *defaults
+    docker:
+      - image: circleci/python:2.7
+
+    working_directory: ~/ng-ngrx-forms-demo
+
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
@@ -68,7 +73,7 @@ jobs:
 
       - run:
           name: Deploy to AWS S3
-          command: aws s3 sync ~/ng-ngrx-forms-demo/dist s3://partha-ng-demo.s3-website.ap-south-1.amazonaws.com --recursive --acl public-read
+          command: aws s3 sync ~/ng-ngrx-forms-demo/dist s3://partha-ng-demo/ --recursive --acl public-read
 
 workflows:
   version: 2
