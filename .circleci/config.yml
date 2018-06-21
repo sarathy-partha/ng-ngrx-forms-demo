@@ -53,6 +53,8 @@ jobs:
     working_directory: ~/ng-ngrx-forms-demo
 
     steps:
+      - checkout
+
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: ~/ng-ngrx-forms-demo/dist
