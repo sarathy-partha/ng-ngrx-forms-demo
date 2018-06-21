@@ -38,7 +38,7 @@ jobs:
             - .firebaserc
             - yarn.lock
 
-  deploy:
+  deploy-firebase:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -55,7 +55,7 @@ jobs:
           name: Deploy App to Firebase
           command: ~/ng-ngrx-forms-demo/node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
 
-  deployAWS:
+  deploy-AWS:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -75,13 +75,13 @@ workflows:
   build-deploy-app:
     jobs:
       - build
-      - deployAWS:
+      - deploy-AWS:
           requires:
             - build
           filters:
               branches:
                 only: master
-      - deploy:
+      - deploy-firebase:
           requires:
             - build
           filters:
