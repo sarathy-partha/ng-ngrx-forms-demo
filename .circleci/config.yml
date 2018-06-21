@@ -15,10 +15,6 @@ jobs:
     steps:
       - checkout
 
-      - attach_workspace:
-          # Must be absolute path or relative path from working_directory
-          at: ~/ng-ngrx-forms-demo/dist
-
       - restore_cache:
           keys:
           - angular-demo-dependencies-{{ checksum "yarn.lock" }}
@@ -43,8 +39,6 @@ jobs:
           root: ~/ng-ngrx-forms-demo
           paths:
             - dist
-            - node_modules/.bin/firebase
-            - node_modules/firebase-tools
             - firebase.json
       # - run:
       #     name: Code Quality
@@ -60,6 +54,13 @@ jobs:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: ~/ng-ngrx-forms-demo
+
+      - restore_cache:
+          keys:
+          - angular-demo-dependencies-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - angular-demo-dependencies-
+
       - run:
           name: Deploy App to Firebase
           command: ~/ng-ngrx-forms-demo/node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
