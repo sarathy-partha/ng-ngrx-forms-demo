@@ -2,11 +2,9 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-defaults: &defaults
 version: 2
 jobs:
   build:
-    <<: *defaults
     docker:
       # specify the version you desire here
       - image: circleci/node:8.11-browsers
@@ -51,7 +49,6 @@ jobs:
       #    command: yarn test
 
   deploy:
-    <<: *defaults
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
@@ -63,8 +60,7 @@ jobs:
 
 workflows:
   version: 2
-
-  -deploy:
+  deploy-app:
     jobs:
       - build
       - deploy:
