@@ -34,13 +34,13 @@ jobs:
           command: yarn build
 
       - persist_to_workspace:
-          root: dist
+          root: ~/ng-ngrx-forms-demo
           paths:
             - dist
 
-      - run:
-          name: Code Quality
-          command: yarn lint
+      # - run:
+      #     name: Code Quality
+      #     command: yarn lint
 
       #- run:
       #    name: Test
