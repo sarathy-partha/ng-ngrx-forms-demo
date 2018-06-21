@@ -33,13 +33,15 @@ jobs:
 
       - run:
           name: Build
-          command: yarn ng -- build --prod --aot --no-progress
+          command: yarn build
 
-      - store_artifacts:
-          path: /dist
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - package-dist
 
       - run:
-          name: Code-Quality
+          name: Code Quality
           command: yarn lint
 
       #- run:
