@@ -30,6 +30,7 @@ jobs:
           paths:
             - ~/.cache/yarn
             - ./node_modules
+
       - run:
           name: build
           command: yarn ng -- build --prod --aot --no-progress
@@ -40,5 +41,5 @@ jobs:
 
       - run:
           name: test
-          commoand: yarn test --single-run --no-progress
+          command: yarn test --single-run --no-progress
 
