@@ -4,39 +4,37 @@
 #
 
 defaults: &defaults
-    working_directory: ~/ng-ngrx-forms-demo
-    docker:
-      - image: circleci/node:8.11-browsers
-
-defaults: &checkout-install
-    - checkout
-
-    - attach_workspace:
-        # Must be absolute path or relative path from working_directory
-        at: ~/ng-ngrx-forms-demo/dist
-
-    - restore_cache:
-        keys:
-        - angular-demo-dependencies-{{ checksum "yarn.lock" }}
-        # fallback to using the latest cache if no exact match is found
-        - angular-demo-dependencies-
-
-    - run:
-        name: install-dependencies
-        command: yarn install
-
-    - save_cache:
-        key: angular-demo-dependencies-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/.cache/yarn
-          - ./node_modules
+  working_directory: ~/ng-ngrx-forms-demo
+  docker:
+    - image: circleci/node:8.11-browsers
 
 version: 2
 jobs:
   build:
     <<: *defaults
     steps:
-      <<: *checkout-install
+      - checkout
+
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: ~/ng-ngrx-forms-demo/dist
+
+      - restore_cache:
+          keys:
+          - angular-demo-dependencies-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - angular-demo-dependencies-
+
+      - run:
+          name: install-dependencies
+          command: yarn install
+
+      - save_cache:
+          key: angular-demo-dependencies-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+            - ./node_modules
+
       - run:
           name: Build
           command: yarn build
@@ -44,8 +42,8 @@ jobs:
       - persist_to_workspace:
           root: ~/ng-ngrx-forms-demo
           paths:
-            - prod-package
-
+            - dist
+            - node_modules
       # - run:
       #     name: Code Quality
       #     command: yarn lint
@@ -57,8 +55,9 @@ jobs:
   deploy:
     <<: *defaults
     steps:
-      <<: *checkout-install
-
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: ~/ng-ngrx-forms-demo
       - run:
           name: Deploy App to Firebase
           command: ~/ng-ngrx-forms-demo/node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
