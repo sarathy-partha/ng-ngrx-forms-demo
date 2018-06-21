@@ -44,6 +44,7 @@ jobs:
           paths:
             - dist
             - node_modules
+            - firebase.json
       # - run:
       #     name: Code Quality
       #     command: yarn lint
