@@ -64,9 +64,12 @@ jobs:
 workflows:
   version: 2
 
-  angular:
+  -deploy:
     jobs:
       - build
       - deploy:
           requires:
             - build
+          filters:
+              branches:
+                only: master
