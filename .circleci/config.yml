@@ -73,7 +73,7 @@ jobs:
 
       - run:
           name: Deploy to AWS S3
-          command: aws s3 sync ~/ng-ngrx-forms-demo/dist s3://partha-ng-demo/ --recursive --acl public-read
+          command: aws s3 sync ~/ng-ngrx-forms-demo/dist s3://partha-ng-demo/ --delete --acl public-read
 
 workflows:
   version: 2
