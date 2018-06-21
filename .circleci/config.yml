@@ -2,57 +2,13 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
-jobs:
-  build:
+
+defaults: @defaults
+    working_directory: ~/ng-ngrx-forms-demo
     docker:
       - image: circleci/node:8.11-browsers
 
-    working_directory: ~/ng-ngrx-forms-demo
-
-    steps:
-      - checkout
-
-      - restore_cache:
-          keys:
-          - angular-demo-dependencies-{{ checksum "yarn.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - angular-demo-dependencies-
-
-      - run:
-          name: install-dependencies
-          command: yarn install
-
-      - save_cache:
-          key: angular-demo-dependencies-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
-            - ./node_modules
-
-      - run:
-          name: Build
-          command: yarn build
-
-      - persist_to_workspace:
-          root: ~/ng-ngrx-forms-demo
-          paths:
-            - dist
-
-      # - run:
-      #     name: Code Quality
-      #     command: yarn lint
-
-      #- run:
-      #    name: Test
-      #    command: yarn test
-
-  deploy:
-    docker:
-      - image: circleci/node:8.11-browsers
-
-    working_directory: ~/ng-ngrx-forms-demo
-
-    steps:
+defaults: @checkout-install
       - checkout
 
       - attach_workspace:
@@ -74,6 +30,34 @@ jobs:
           paths:
             - ~/.cache/yarn
             - ./node_modules
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      <<: *checkout-install
+      - run:
+          name: Build
+          command: yarn build
+
+      - persist_to_workspace:
+          root: ~/ng-ngrx-forms-demo
+          paths:
+            - prod-package
+
+      # - run:
+      #     name: Code Quality
+      #     command: yarn lint
+
+      #- run:
+      #    name: Test
+      #    command: yarn test
+
+  deploy:
+    <<: *defaults
+    steps:
+      <<: *checkout-install
 
       - run:
           name: Deploy App to Firebase
