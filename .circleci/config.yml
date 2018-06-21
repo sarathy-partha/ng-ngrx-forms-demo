@@ -43,7 +43,8 @@ jobs:
           root: ~/ng-ngrx-forms-demo
           paths:
             - dist
-            - node_modules
+            - node_modules/.bin/firebase
+            - node_modules/firebase-tools
             - firebase.json
       # - run:
       #     name: Code Quality
