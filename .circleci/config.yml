@@ -35,11 +35,14 @@ jobs:
           name: Build
           command: yarn ng -- build --prod --aot --no-progress
 
+      - store_artifacts:
+          path: /dist
+
       - run:
           name: Code-Quality
           command: yarn lint
 
-      - run:
-          name: Test
-          command: yarn test --single-run --no-progress
+      #- run:
+      #    name: Test
+      #    command: yarn test
 
