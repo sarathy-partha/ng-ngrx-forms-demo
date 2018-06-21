@@ -40,6 +40,7 @@ jobs:
           paths:
             - dist
             - firebase.json
+            - yarn.lock
       # - run:
       #     name: Code Quality
       #     command: yarn lint
