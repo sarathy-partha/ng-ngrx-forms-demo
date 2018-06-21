@@ -2,9 +2,11 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+defaults: &defaults
 version: 2
 jobs:
   build:
+    <<: *defaults
     docker:
       # specify the version you desire here
       - image: circleci/node:8.11-browsers
@@ -38,7 +40,7 @@ jobs:
       - persist_to_workspace:
           root: dist
           paths:
-            - package-dist
+            - dist
 
       - run:
           name: Code Quality
@@ -48,3 +50,23 @@ jobs:
       #    name: Test
       #    command: yarn test
 
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /dist
+
+      - run:
+          name: Deploy App to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+
+workflows:
+  version: 2
+
+  angular:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
