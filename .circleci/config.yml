@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: angular/ngcontainer
+    - image: circleci/node:8.11-browsers
 
   working_directory: ~/ng-ngrx-forms-demo
 
@@ -29,7 +29,7 @@ jobs:
 
       - run:
           name: Build
-          command: yarn run build
+          command: yarn build
 
       - persist_to_workspace:
           root: ~/ng-ngrx-forms-demo
@@ -48,7 +48,7 @@ jobs:
 
       - run:
           name: Code Quality Check
-          command: yarn run lint
+          command: yarn lint
 
   test:
     <<: *defaults
@@ -64,7 +64,7 @@ jobs:
             - angular-demo-dependencies-
       - run:
           name: Test App
-          command: xvfb-run -a yarn test
+          command: yarn test
 
       - store_artifacts:
           path: ~/ng-ngrx-forms-demo/coverage
