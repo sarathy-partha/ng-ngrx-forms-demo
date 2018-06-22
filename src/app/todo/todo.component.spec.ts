@@ -25,7 +25,10 @@ describe('TodoComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TodoComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: ToDoService, useValue: toDoServiceStub }, { provide: Store, useValue: storeStub }]
+      providers: [
+        { provide: ToDoService, useValue: toDoServiceStub },
+        { provide: Store, useValue: storeStub }
+      ]
     });
     fixture = TestBed.createComponent(TodoComponent);
     comp = fixture.componentInstance;
@@ -37,7 +40,9 @@ describe('TodoComponent', () => {
 
   describe('ngOnInit', () => {
     it('makes expected calls', () => {
-      const toDoServiceStub: ToDoService = fixture.debugElement.injector.get(ToDoService);
+      const toDoServiceStub: ToDoService = fixture.debugElement.injector.get(
+        ToDoService
+      );
       const storeStub: Store<any> = fixture.debugElement.injector.get(Store);
       spyOn(comp, 'showToDo');
       spyOn(toDoServiceStub, 'getToDoStatus');
@@ -51,7 +56,9 @@ describe('TodoComponent', () => {
 
   describe('showToDo', () => {
     it('makes expected calls', () => {
-      const toDoServiceStub: ToDoService = fixture.debugElement.injector.get(ToDoService);
+      const toDoServiceStub: ToDoService = fixture.debugElement.injector.get(
+        ToDoService
+      );
       spyOn(toDoServiceStub, 'getToDos');
       comp.showToDo();
       expect(toDoServiceStub.getToDos).toHaveBeenCalled();

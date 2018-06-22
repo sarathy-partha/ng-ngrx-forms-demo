@@ -1,3 +1,4 @@
+import { AdalService } from 'adal-angular4';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, Injectable } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
@@ -5,7 +6,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '@app/core/auth/auth.service';
 import { Store } from '@ngrx/store';
 import { AppComponent } from './app.component';
-
+import { environment } from '@env/environment';
 export class FakeMediaQueryList implements MediaQueryList {
   /** The callback for change events. */
   addListenerCallback?: (mql: MediaQueryList) => void;
@@ -75,6 +76,9 @@ describe('AppComponent', () => {
     const authServiceStub = {
       initiAuthListerner: () => ({})
     };
+    const adalServiceStub = {
+      init: () => ({})
+    };
     const storeStub = {
       select: () => ({})
     };
@@ -85,6 +89,7 @@ describe('AppComponent', () => {
         { provide: MediaMatcher, useClass: FakeMediaMatcher },
         { provide: ChangeDetectorRef, useValue: changeDetectorRefStub },
         { provide: AuthService, useValue: authServiceStub },
+        { provide: AdalService, useValue: adalServiceStub },
         { provide: Store, useValue: storeStub }
       ]
     });
@@ -102,12 +107,19 @@ describe('AppComponent', () => {
 
   describe('ngOnInit', () => {
     it('makes expected calls', () => {
-      const authServiceStub: AuthService = fixture.debugElement.injector.get(AuthService);
+      const authServiceStub: AuthService = fixture.debugElement.injector.get(
+        AuthService
+      );
+      const adalServiceStub: AdalService = fixture.debugElement.injector.get(
+        AdalService
+      );
       const storeStub: Store<any> = fixture.debugElement.injector.get(Store);
       spyOn(authServiceStub, 'initiAuthListerner');
+      spyOn(adalServiceStub, 'init');
       spyOn(storeStub, 'select');
       comp.ngOnInit();
       expect(authServiceStub.initiAuthListerner).toHaveBeenCalled();
+      //expect(adalServiceStub.init).toHaveBeenCalled();
       expect(storeStub.select).toHaveBeenCalled();
     });
   });

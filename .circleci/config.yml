@@ -39,6 +39,20 @@ jobs:
             - .firebaserc
             - yarn.lock
 
+      - run:
+          name: Code Quality Check
+          command: yarn lint
+
+  test:
+    <<: *defaults
+    steps:
+      - run:
+        name: Test App
+        command: yarn test --code-coverage
+
+      - store_artifacts:
+          path: /coverage
+
   deploy-firebase:
     <<: *defaults
     steps:
@@ -80,15 +94,21 @@ workflows:
   build-deploy-app:
     jobs:
       - build
-      - deploy-AWS:
+      - test:
           requires:
             - build
           filters:
               branches:
                 only: master
+      - deploy-AWS:
+          requires:
+            - test
+          filters:
+              branches:
+                only: master
       - deploy-firebase:
           requires:
-            - build
+            - test
           filters:
               branches:
                 only: master
