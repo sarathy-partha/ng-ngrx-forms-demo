@@ -1,6 +1,6 @@
 defaults: &defaults
   docker:
-    - image: circleci/node:8.11-browsers
+    - image: angular/ngcontainer
 
   working_directory: ~/ng-ngrx-forms-demo
 
@@ -19,7 +19,7 @@ jobs:
 
       - run:
           name: install-dependencies
-          command: yarn install
+          command: yarn
 
       - save_cache:
           key: angular-demo-dependencies-{{ checksum "yarn.lock" }}
@@ -29,7 +29,7 @@ jobs:
 
       - run:
           name: Build
-          command: yarn build
+          command: yarn run build
 
       - persist_to_workspace:
           root: ~/ng-ngrx-forms-demo
@@ -48,7 +48,7 @@ jobs:
 
       - run:
           name: Code Quality Check
-          command: yarn lint
+          command: yarn run lint
 
   test:
     <<: *defaults
@@ -64,7 +64,7 @@ jobs:
             - angular-demo-dependencies-
       - run:
           name: Test App
-          command: yarn test
+          command: xvfb-run -a yarn test
 
       - store_artifacts:
           path: ~/ng-ngrx-forms-demo/coverage
