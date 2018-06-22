@@ -38,6 +38,10 @@ jobs:
             - firebase.json
             - .firebaserc
             - yarn.lock
+            - package.json
+            - karma.conf.js
+            - angular.json
+            - src
 
       - run:
           name: Code Quality Check
@@ -46,6 +50,15 @@ jobs:
   test:
     <<: *defaults
     steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: ~/ng-ngrx-forms-demo
+
+      - restore_cache:
+          keys:
+            - angular-demo-dependencies-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - angular-demo-dependencies-
       - run:
           name: Test App
           command: yarn test --code-coverage
