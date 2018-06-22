@@ -110,10 +110,10 @@ workflows:
   version: 2
   build-deploy-app:
     jobs:
-      #- build
+      - build
       - test:
-          #requires:
-            #- build
+          requires:
+            - build
           filters:
               branches:
                 only: master
