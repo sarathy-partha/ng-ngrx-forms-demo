@@ -64,11 +64,11 @@ jobs:
             - angular-demo-dependencies-
       - run:
           name: Test App
-          command: yarn test --code-coverage
+          command: yarn test
 
       - store_artifacts:
-          path: /coverage
-          prefix: tests
+          path: ~/ng-ngrx-forms-demo/coverage
+          prefix: test-results
 
   deploy-firebase:
     <<: *defaults
@@ -110,10 +110,10 @@ workflows:
   version: 2
   build-deploy-app:
     jobs:
-      - build
+      #- build
       - test:
-          requires:
-            - build
+          #requires:
+            #- build
           filters:
               branches:
                 only: master
