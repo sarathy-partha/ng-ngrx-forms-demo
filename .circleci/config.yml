@@ -41,6 +41,9 @@ jobs:
             - package.json
             - karma.conf.js
             - angular.json
+            - tsconfig.json
+            - protractor.conf.js
+            - tslint.json
             - src
 
       - run:
