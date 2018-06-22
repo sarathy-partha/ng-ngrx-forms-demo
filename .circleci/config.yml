@@ -68,10 +68,10 @@ jobs:
 
       - store_artifacts:
           path: ~/ng-ngrx-forms-demo/coverage
-          destination: ~/ng-ngrx-forms-demo/test-results
+          prefix: test-results
 
       - store_test_results:
-          path: ~/ng-ngrx-forms-demo/test-results
+          path: ~/ng-ngrx-forms-demo/coverage
 
   deploy-firebase:
     <<: *defaults
