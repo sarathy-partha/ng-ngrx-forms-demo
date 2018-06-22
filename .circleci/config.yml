@@ -47,8 +47,8 @@ jobs:
     <<: *defaults
     steps:
       - run:
-        name: Test App
-        command: yarn test --code-coverage
+          name: Test App
+          command: yarn test --code-coverage
 
       - store_artifacts:
           path: /coverage
