@@ -68,6 +68,7 @@ jobs:
 
       - store_artifacts:
           path: /coverage
+          prefix: tests
 
   deploy-firebase:
     <<: *defaults
