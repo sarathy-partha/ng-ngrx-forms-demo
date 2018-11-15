@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription, Observable } from 'rxjs';
 import * as appReducer from '../../../app.reducer';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +16,10 @@ export class SignupComponent implements OnInit {
   isLoading$: Observable<boolean>;
   private loadingSubs: Subscription;
 
-  constructor(private authService: AuthService, private store: Store<{ ui: appReducer.State }>) {}
+  constructor(
+    private authService: AuthService,
+    private store: Store<{ ui: appReducer.State }>
+  ) {}
 
   ngOnInit() {
     this.isLoading$ = this.store.select(appReducer.getIsLoading);

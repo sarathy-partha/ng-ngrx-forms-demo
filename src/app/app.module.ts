@@ -12,6 +12,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -23,7 +24,10 @@ import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production
+    })
   ],
   providers: [AdalService, AdalGuard],
   bootstrap: [AppComponent]

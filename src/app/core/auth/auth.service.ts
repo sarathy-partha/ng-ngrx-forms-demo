@@ -12,7 +12,7 @@ import * as appReducer from '../../app.reducer';
 import * as UI from '../../shared/store/ui.actions';
 import * as AUTH from './actions/auth.actions';
 import { AdalService } from 'adal-angular4';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService implements OnInit {

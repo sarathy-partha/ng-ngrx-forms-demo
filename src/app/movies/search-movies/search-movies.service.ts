@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Movie } from '../models/movies.model';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { config } from '../../shared/config';
 
 const MOVIES_URL = config.movies.POPULAR_MOVIES_URL;

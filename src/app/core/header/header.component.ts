@@ -4,7 +4,7 @@ import { MatIconRegistry } from '@angular/material';
 
 import { AuthService } from '../auth/auth.service';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { AdalService } from 'adal-angular4';
 import * as appReducer from '../../app.reducer';
 

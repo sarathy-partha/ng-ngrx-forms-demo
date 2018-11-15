@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { menuItems } from './left-nav.data';
 import { RouterLink } from '@angular/router';
@@ -6,7 +6,6 @@ import { RouterLink } from '@angular/router';
 import * as UI from '@app/shared/store/ui.actions';
 import * as appReducer from '@app/app.reducer';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-left-nav',

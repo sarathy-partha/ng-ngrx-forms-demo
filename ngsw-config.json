@@ -1,0 +1,33 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/favicon.ico", "/index.html", "/*.css", "/*.js"]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/assets/**"]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api-cache",
+      "urls": ["https://api.themoviedb.org/3/movie/now_playing?&region=IN&"],
+      "cacheConfig": {
+        "maxSize": 100,
+        "maxAge": "10s",
+        "timeout": "10s",
+        "strategy": "freshness"
+      }
+    }
+  ]
+}

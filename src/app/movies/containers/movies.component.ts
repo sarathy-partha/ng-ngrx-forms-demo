@@ -1,8 +1,7 @@
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../movies.service';
 import { Movie } from '../models/movies.model';
-import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import {

@@ -16,7 +16,7 @@
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
-            "assets": ["src/assets", "src/favicon.ico"],
+            "assets": ["src/assets", "src/favicon.ico", "src/manifest.json"],
             "styles": ["src/main.scss", "src/material.theme.scss"],
             "scripts": []
           },
@@ -36,7 +36,8 @@
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "serviceWorker": true
             }
           }
         },
@@ -66,7 +67,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": ["src/main.scss", "src/material.theme.scss"],
-            "assets": ["src/assets", "src/favicon.ico"]
+            "assets": ["src/assets", "src/favicon.ico", "src/manifest.json"]
           }
         },
         "lint": {

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subscription } from 'rxjs';
 import { Status, ToDo } from './todo.model';
-import { Subscription } from 'rxjs/Subscription';
 import * as appReducer from '../app.reducer';
 import { Store } from '@ngrx/store';
 import { ToDoService } from './todo.service';

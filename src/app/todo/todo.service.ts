@@ -1,8 +1,8 @@
+import { map } from 'rxjs/operators';
 import { Injectable, Inject } from '@angular/core';
 import { Status, ToDo } from './todo.model';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Subject } from 'rxjs/Subject';
-import { Subscription } from 'rxjs/Subscription';
+import { Subject, Subscription } from 'rxjs';
 import * as UI from '../shared/store/ui.actions';
 import * as appReducer from '../app.reducer';
 import { Store } from '@ngrx/store';
@@ -29,14 +29,16 @@ export class ToDoService {
       this.todoDb
         .collection('Status')
         .snapshotChanges()
-        .map(resData => {
-          return resData.map(data => {
-            return {
-              id: data.payload.doc.id,
-              status: data.payload.doc.get('status')
-            };
-          });
-        })
+        .pipe(
+          map(resData => {
+            return resData.map(data => {
+              return {
+                id: data.payload.doc.id,
+                status: data.payload.doc.get('status')
+              };
+            });
+          })
+        )
         .subscribe(
           (todoStatus: Status[]) => {
             this.store.dispatch(new UI.StartLoading());
@@ -62,13 +64,15 @@ export class ToDoService {
       this.todoDb
         .collection('ToDo')
         .snapshotChanges()
-        .map(resData => {
-          return resData.map(res => {
-            const data = res.payload.doc.data() as ToDo;
-            data.id = res.payload.doc.id;
-            return data;
-          });
-        })
+        .pipe(
+          map(resData => {
+            return resData.map(res => {
+              const data = res.payload.doc.data() as ToDo;
+              data.id = res.payload.doc.id;
+              return data;
+            });
+          })
+        )
         .subscribe(
           (todo: ToDo[]) => {
             this.store.dispatch(new UI.StopLoading());

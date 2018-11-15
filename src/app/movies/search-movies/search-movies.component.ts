@@ -3,16 +3,12 @@ import { Movie } from '../models/movies.model';
 import { MoviesService } from '../movies.service';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { SearchMoviesService } from './search-movies.service';
-import { catchError } from 'rxjs/operators/catchError';
-import { map } from 'rxjs/operators/map';
-import { startWith } from 'rxjs/operators/startWith';
-import { switchMap } from 'rxjs/operators/switchMap';
-import { of as observableOf } from 'rxjs/observable/of';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { of as observableOf, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as UI from '../../shared/store/ui.actions';
 import * as appReducer from '../../app.reducer';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 import { UIControlService } from '../../shared/uicontrol.service';
 
 @Component({

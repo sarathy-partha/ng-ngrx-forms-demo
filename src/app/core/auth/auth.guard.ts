@@ -1,3 +1,4 @@
+import { take, map, tap } from 'rxjs/operators';
 import {
   CanActivate,
   ActivatedRouteSnapshot,
@@ -11,10 +12,8 @@ import { Route } from '@angular/compiler/src/core';
 
 import * as appReducer from '../../app.reducer';
 import { Store } from '@ngrx/store';
-import 'rxjs/add/operator/take';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Observable';
+
+import { Observable } from 'rxjs';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AdalService } from 'adal-angular4';
@@ -39,30 +38,32 @@ export class AuthGuard implements CanActivate, CanLoad, OnInit {
   ): Observable<boolean> | boolean {
     return (
       this.adalService.userInfo.authenticated ||
-      this.afAuth.authState
-        .take(1)
-        .map(user => !!user)
-        .do(loggedIn => {
+      this.afAuth.authState.pipe(
+        take(1),
+        map(user => !!user),
+        tap(loggedIn => {
           if (!loggedIn) {
             console.log('access denied');
             this.router.navigate(['/signin']);
           }
         })
+      )
     );
   }
 
   canLoad(route: Route): Observable<boolean> | boolean {
     return (
       this.adalService.userInfo.authenticated ||
-      this.afAuth.authState
-        .take(1)
-        .map(user => !!user)
-        .do(loggedIn => {
+      this.afAuth.authState.pipe(
+        take(1),
+        map(user => !!user),
+        tap(loggedIn => {
           if (!loggedIn) {
             console.log('access denied');
             this.router.navigate(['/signin']);
           }
         })
+      )
     );
   }
 }
