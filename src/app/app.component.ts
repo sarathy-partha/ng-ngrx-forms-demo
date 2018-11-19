@@ -58,10 +58,10 @@ export class AppComponent implements OnInit {
       snack.onAction().subscribe(() => {
         window.location.reload();
       });
-      this.update.activated.subscribe(event => {
-        console.log('Old version was', event.previous);
-        console.log('New version is', event.current);
-      });
+    });
+    this.update.activated.subscribe(event => {
+      console.log('Old version was', event.previous);
+      console.log('New version is', event.current);
     });
   }
 }
