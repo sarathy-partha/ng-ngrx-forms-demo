@@ -11,7 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AppRoutingModule } from './app-routing.module';
-import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
+import { AdalService, AdalGuard } from 'adal-angular4';
 import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [AppComponent, HomeComponent],

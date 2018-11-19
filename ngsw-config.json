@@ -4,7 +4,6 @@
     {
       "name": "app",
       "installMode": "prefetch",
-      "updateMode": "prefetch",
       "resources": {
         "files": ["/favicon.ico", "/index.html", "/*.css", "/*.js"]
       }
@@ -14,18 +13,21 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/assets/**"]
+        "files": ["/assets/**"],
+        "urls": ["https://image.tmdb.org/t/p/w500/**"]
       }
     }
   ],
   "dataGroups": [
     {
       "name": "api-cache",
-      "urls": ["https://api.themoviedb.org/3/movie/now_playing?&region=IN&"],
+      "urls": [
+        "https://api.themoviedb.org/3/movie/**",
+        "https://ng-ngrx-demo.firebaseio.com/**"
+      ],
       "cacheConfig": {
         "maxSize": 100,
-        "maxAge": "10s",
-        "timeout": "10s",
+        "maxAge": "1h",
         "strategy": "freshness"
       }
     }
