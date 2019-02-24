@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Movie } from '../models/movies.model';
-import { MoviesService } from '../movies.service';
+import * as fromServices from '../services';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { SearchMoviesService } from './search-movies.service';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { of as observableOf, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import * as UI from '../../shared/store/ui.actions';
 import * as appReducer from '../../app.reducer';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { UIControlService } from '../../shared/uicontrol.service';
 
 @Component({
@@ -19,7 +18,7 @@ import { UIControlService } from '../../shared/uicontrol.service';
 export class SearchMoviesComponent implements OnInit, AfterViewInit {
   MOVIE_URL = 'http://image.tmdb.org/t/p/w185/';
   movie: Movie[];
-  movieDatabase: SearchMoviesService | null;
+  movieDatabase: fromServices.SearchMoviesService | null;
   displayedColumns = ['title', 'popularity', 'id', 'release_date'];
   dataSource = new MatTableDataSource();
 
@@ -36,7 +35,7 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit() {
-    this.isLoadingResults$ = this.store.select(appReducer.getIsLoading);
+    this.isLoadingResults$ = this.store.pipe(select(appReducer.getIsLoading));
     this.showMovies();
   }
 
@@ -51,7 +50,7 @@ export class SearchMoviesComponent implements OnInit, AfterViewInit {
   }
 
   showMovies() {
-    this.movieDatabase = new SearchMoviesService(this.http);
+    this.movieDatabase = new fromServices.SearchMoviesService(this.http);
 
     this.paginator.page
       .pipe(

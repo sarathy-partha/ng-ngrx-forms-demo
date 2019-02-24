@@ -3,7 +3,7 @@ import { FormControl, Validators, NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription, Observable } from 'rxjs';
 import * as appReducer from '../../../app.reducer';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoading$ = this.store.select(appReducer.getIsLoading);
+    this.isLoading$ = this.store.pipe(select(appReducer.getIsLoading));
     this.maxDate = new Date();
     this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }

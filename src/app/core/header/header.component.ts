@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
 import { AuthService } from '../auth/auth.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AdalService } from 'adal-angular4';
 import * as appReducer from '../../app.reducer';
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isAuth$ = this.store.select(appReducer.getAuthStatus);
+    this.isAuth$ = this.store.pipe(select(appReducer.getAuthStatus));
     this.adalService.handleWindowCallback();
   }
 

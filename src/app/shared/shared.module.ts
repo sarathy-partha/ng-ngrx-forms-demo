@@ -7,8 +7,20 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, FlexLayoutModule],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule, FlexLayoutModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FlexLayoutModule
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    FlexLayoutModule
+  ],
   providers: [UIControlService]
 })
 export class SharedModule {}

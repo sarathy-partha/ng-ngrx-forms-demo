@@ -1,23 +1,19 @@
-import { Subscription, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { MoviesService } from '../movies.service';
 import { Movie } from '../models/movies.model';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import * as fromStore from '../store';
 
 import {
   trigger,
-  group,
-  state,
   style,
   transition,
   animate,
-  keyframes,
   query,
   stagger
 } from '@angular/animations';
 
-import * as moviesReducer from '../reducers/movies.reducer';
-import * as Movies from '../actions/movies.actions';
+import * as Movies from '../store/actions/movies.actions';
 
 @Component({
   selector: 'app-movies',
@@ -48,23 +44,14 @@ import * as Movies from '../actions/movies.actions';
   ]
 })
 export class MoviesComponent implements OnInit {
-  movie$: Observable<Movie[]>;
-  upComingMovies$: Observable<boolean>;
+  upComingMovies$: Observable<Movie[]>;
 
-  constructor(
-    private movieService: MoviesService,
-    private moviesStore: Store<moviesReducer.State>
-  ) {}
+  constructor(private moviesStore: Store<fromStore.MoviesState>) {}
 
   ngOnInit() {
     this.upComingMovies$ = this.moviesStore.select(
-      moviesReducer.isUpComingMovies
+      fromStore.getUpcomingMoviesEntities
     );
-    this.movie$ = this.moviesStore.select(moviesReducer.getUpComingMovies);
-    this.getMovies();
-  }
-
-  getMovies() {
-    this.movieService.getMovies();
+    this.moviesStore.dispatch(new fromStore.LoadUpcomingMovies());
   }
 }

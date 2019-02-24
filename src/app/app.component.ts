@@ -1,7 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthService } from '@app/core/auth/auth.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable, interval } from 'rxjs';
 import * as appReducer from './app.reducer';
 import { AdalService } from 'adal-angular4';
@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authservice.initiAuthListerner();
     this.mobileQuery.removeListener(this._mobileQueryListener);
-    this.theme$ = this.store.select(appReducer.getCurrentTheme);
+    this.theme$ = this.store.pipe(select(appReducer.getCurrentTheme));
     // Check for new App Version and update
     if (this.update.isEnabled) {
       interval(6 * 60 * 60).subscribe(() =>

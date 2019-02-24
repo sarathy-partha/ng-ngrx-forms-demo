@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ToDoService } from './todo.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { TodoComponent } from './todo.component';
 
 describe('TodoComponent', () => {
@@ -50,7 +50,7 @@ describe('TodoComponent', () => {
       comp.ngOnInit();
       expect(comp.showToDo).toHaveBeenCalled();
       expect(toDoServiceStub.getToDoStatus).toHaveBeenCalled();
-      expect(storeStub.select).toHaveBeenCalled();
+      expect(storeStub.pipe(select(null, null))).toHaveBeenCalled();
     });
   });
 

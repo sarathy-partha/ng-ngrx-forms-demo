@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 
 import * as UI from '@app/shared/store/ui.actions';
 import * as appReducer from '@app/app.reducer';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-left-nav',
@@ -22,11 +22,11 @@ export class LeftNavComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new UI.SetTheme(this.theme));
-    this.theme$ = this.store.select(appReducer.getCurrentTheme);
+    this.theme$ = this.store.pipe(select(appReducer.getCurrentTheme));
   }
 
   setTheme(theme) {
     this.store.dispatch(new UI.SetTheme(theme));
-    this.theme$ = this.store.select(appReducer.getCurrentTheme);
+    this.theme$ = this.store.pipe(select(appReducer.getCurrentTheme));
   }
 }

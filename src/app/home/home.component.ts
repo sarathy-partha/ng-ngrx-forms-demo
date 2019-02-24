@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../core/auth/auth.service';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as appReducer from '../app.reducer';
@@ -20,6 +20,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.authService.checkAuthStatus();
-    this.isAuth$ = this.store.select(appReducer.getAuthStatus);
+    this.isAuth$ = this.store.pipe(select(appReducer.getAuthStatus));
   }
 }

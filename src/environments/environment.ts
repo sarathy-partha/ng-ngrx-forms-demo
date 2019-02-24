@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  development: true,
   firebase: {
     apiKey: 'AIzaSyAA_7NsP3bqUSoIJf5O2ldDIoKdJdki1yM',
     authDomain: 'ng-ngrx-demo.firebaseapp.com',

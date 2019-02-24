@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { MatButton } from '@angular/material';
 import * as appReducer from '../../../app.reducer';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-signin',
@@ -25,7 +25,7 @@ export class SigninComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoading$ = this.store.select(appReducer.getIsLoading);
+    this.isLoading$ = this.store.pipe(select(appReducer.getIsLoading));
     this.signinForm = new FormGroup({
       email: new FormControl('', {
         validators: [Validators.required, Validators.email]

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Status, ToDo } from './todo.model';
 import * as appReducer from '../app.reducer';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { ToDoService } from './todo.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.isLoading$ = this.store.select(appReducer.getIsLoading);
+    this.isLoading$ = this.store.pipe(select(appReducer.getIsLoading));
     this.todoStatusSubscription = this.todoService.todoStatusChanged.subscribe(
       todoStatus => (this.todoStatus = todoStatus)
     );

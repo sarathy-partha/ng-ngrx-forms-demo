@@ -1,6 +1,12 @@
-<ng-container *ngIf='movie$ | async as movies'>
-  <div [@cardAnimation]="movies.length" fxFlex fxLayoutAlign="space-around stretch" fxLayout="row wrap" fxLayoutGap="10px"
-    style="margin-bottom: 20px">
+<ng-container *ngIf="(upComingMovies$ | async) as movies">
+  <div
+    [@cardAnimation]="movies.length"
+    fxFlex
+    fxLayoutAlign="space-around stretch"
+    fxLayout="row wrap"
+    fxLayoutGap="10px"
+    style="margin-bottom: 20px"
+  >
     <app-movies-list *ngFor="let movie of movies" [detail]="movie">
     </app-movies-list>
   </div>

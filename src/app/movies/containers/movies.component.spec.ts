@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { MoviesService } from '../movies.service';
+import { MoviesService } from '../services/movies.service';
 import { Store } from '@ngrx/store';
 import { MoviesComponent } from './movies.component';
 
@@ -38,10 +38,10 @@ describe('MoviesComponent', () => {
   describe('ngOnInit', () => {
     it('makes expected calls', () => {
       const storeStub: Store<any> = fixture.debugElement.injector.get(Store);
-      spyOn(comp, 'getMovies');
+      spyOn(comp, 'upComingMovies$');
       spyOn(storeStub, 'select');
       comp.ngOnInit();
-      expect(comp.getMovies).toHaveBeenCalled();
+      expect(comp.upComingMovies$).toHaveBeenCalled();
       expect(storeStub.select).toHaveBeenCalled();
     });
   });
@@ -51,8 +51,8 @@ describe('MoviesComponent', () => {
       const moviesServiceStub: MoviesService = fixture.debugElement.injector.get(
         MoviesService
       );
-      spyOn(moviesServiceStub, 'getMovies');
-      comp.getMovies();
+      spyOn(moviesServiceStub, 'upComingMovies$');
+      comp.upComingMovies$();
       expect(moviesServiceStub.getMovies).toHaveBeenCalled();
     });
   });
